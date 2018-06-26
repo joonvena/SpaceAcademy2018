@@ -49,7 +49,6 @@ public class Game {
     }
 
     private void eventCheck(int currentArea) {
-        
     }
 
 
