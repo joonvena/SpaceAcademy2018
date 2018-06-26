@@ -34,7 +34,10 @@ public class Controller {
         conditions.put("GruisAlive", true);
         conditions.put("GruisAngry", true);
         for(int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
-            Game.encounterCheck(thisArea.getEncountersinRoom().get(i));
+            if(Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
+                Text text5 = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
+                output.getChildren().addAll(new Text(input+"\n\n"), text5);
+            };
         }
         String borderAreas = "";
         String allItems = "";
@@ -45,9 +48,6 @@ public class Controller {
         for (int i = 0; i < thisArea.getItemList().size(); i++) {
             allItems += "  " + thisArea.getItemList().get(i);
         }
-
-
-
 
         Text text1 = new Text("\nYou are in "+thisArea.getAreaName()+"\n");
         Text text2 = new Text(thisArea.getDescription()+"\n");

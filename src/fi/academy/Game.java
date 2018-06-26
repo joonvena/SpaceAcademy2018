@@ -74,17 +74,24 @@ public class Game {
         return -1;
     }
 
-    static void encounterCheck(String encounterName) {
+    static boolean encounterCheck(String encounterName) {
         System.out.println(encounterName);
         Encounter encounter = encounters.get(encounterName);
         for (int i = 0; i < encounter.getConditions().size(); i++) {
             String checkCond = encounter.getConditions().get(i);
             System.out.println(checkCond);
-            if (conditions.get(checkCond)) {
-                        System.out.print(encounter.getDescription());
+            if (conditions.get(checkCond) && (encounter.gethashappened() == false)) {
+                        return true;
                     }
                 }
+                return false;
             }
+
+    static String encounterHappens(String encounterName) {
+        Encounter encounter = encounters.get(encounterName);
+        return encounter.getDescription();
+
+    }
             
 
     public static String fetchAreaName(int index) {
@@ -136,7 +143,7 @@ public class Game {
                 for (int i = 0; i < condition.length; i++) {
                     conditions.add(condition[i]);
                 }
-                encounters.put(encounterName, new Encounter(encounterName, encounterDescription, conditions));
+                encounters.put(encounterName, new Encounter(conditions, encounterName, encounterDescription));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
