@@ -6,18 +6,54 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
+    static int currentArea = 0;
+    static List<Area> areaList = new ArrayList<>();
 
     public void start() {
         Scanner reader = new Scanner(System.in);
-        List<Area> areaList = new ArrayList<>();
-        
+        ArrayList<Integer> borderings = new ArrayList<>();
+        borderings.add(0);
+        borderings.add(1);
+        Area startingPlace = new Area("Cryo chamber", "Place where you start", borderings);
+        Area startingPlace2 = new Area("Locker room", "Place where you put clothes on", borderings);
+        areaList.add(startingPlace);
+        areaList.add(startingPlace2);
+
+
+        //game loop
+        while(true) {
+            System.out.println("You are in" + areaList.get(currentArea));
+            String input = reader.nextLine();
+            commandParser(input);
+        }
 
 
     }
 
 
-    public void commandparser() {
+    public void commandParser(String input) {
+//        input = input.toLowerCase();
+        String [] command = input.split(" ", 2);
+        switch(command[0]) {
+            case "goto": {
+                int nextArea = fetchArea(command[1]);
+                if (nextArea != -1) {
+                    currentArea = nextArea;
+                } else {
+                    System.out.println("Can't go there!");
+                }
+                break;
+            }
+        }
+    }
 
+    public int fetchArea(String input) {
+        for (int i = 0; i < areaList.size(); i++) {
+            if (input.equalsIgnoreCase(areaList.get(i).getAreaName())) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

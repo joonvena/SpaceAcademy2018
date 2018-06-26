@@ -25,4 +25,12 @@ public class Area {
         return borderingAreas;
     }
 
+
+    @Override
+    public String toString() {
+        return " " + areaName +
+                ", description='" + description + '\'' +
+                ", borderingAreas=" + borderingAreas +
+                '}';
+    }
 }
