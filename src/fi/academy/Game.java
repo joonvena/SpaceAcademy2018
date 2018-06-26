@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Game {
     static int currentArea = 0;
     static List<Area> areaList = new ArrayList<>();
+    static List<String> inventory = new ArrayList<>(); // Change this to Item list!!
 
     public void start() {
         fileReader();
@@ -28,7 +29,14 @@ public class Game {
                 }
                 break;
             }
+            case "take": {
+                getItem(command[1]);
+            }
         }
+    }
+
+    public static void getItem (String input) {
+        
     }
 
     public static int fetchAreaID(String input) {
