@@ -10,6 +10,7 @@ public class Game {
     static List<Area> areaList = new ArrayList<>();
     static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
+    static List<String> inventory = new ArrayList<>(); 
 
     public void start() {
         fileReader();
@@ -28,8 +29,41 @@ public class Game {
                 }
                 break;
             }
+            case "take": {
+                getItem(command[1]);
+                break;
+            }
+            case "drop": {
+                loseItem(command[1]);
+                break;
+            }
         }
     }
+
+    public static void getItem (String input) {
+        List itemsInRoom = areaList.get(currentArea).getItemList();
+        System.out.println(itemsInRoom);
+        if (itemsInRoom.contains(input)) {
+            System.out.println("Is here!");
+            itemsInRoom.remove(input);
+            inventory.add(input);
+        } else {
+            System.out.println(input+" is not in this area!");
+        }
+    }
+
+    public static void loseItem (String input) {
+        List itemsInRoom = areaList.get(currentArea).getItemList();
+        System.out.println(itemsInRoom);
+        if (inventory.contains(input)) {
+            System.out.println("You have!");
+            inventory.remove(input);
+            itemsInRoom.add(input);
+        } else {
+            System.out.println(input+" is not in your pocket!");
+        }
+    }
+
 
     public static int fetchAreaID(String input) {
         for (int i = 0; i < areaList.size(); i++) {
