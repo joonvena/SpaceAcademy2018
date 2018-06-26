@@ -1,0 +1,7 @@
+.boxLabel {
+    -fx-background-color: gray;
+}
+
+#topPane {
+    -fx-background-color: blue;
+  }
