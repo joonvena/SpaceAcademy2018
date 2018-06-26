@@ -18,10 +18,6 @@ public class Game {
         ArrayList<Integer> borderings = new ArrayList<>();
         borderings.add(0);
         borderings.add(1);
-        Area startingPlace = new Area("Cryo chamber", "Place where you start", borderings);
-        Area startingPlace2 = new Area("Locker room", "Place where you put clothes on", borderings);
-        areaList.add(startingPlace);
-        areaList.add(startingPlace2);
 
 
         //game loop
@@ -39,7 +35,7 @@ public class Game {
         String [] command = input.split(" ", 2);
         switch(command[0]) {
             case "goto": {
-                int nextArea = fetchArea(command[1]);
+                int nextArea = fetchAreaID(command[1]);
                 if (nextArea != -1) {
                     currentArea = nextArea;
                 } else {
@@ -50,13 +46,17 @@ public class Game {
         }
     }
 
-    public int fetchArea(String input) {
+    public int fetchAreaID(String input) {
         for (int i = 0; i < areaList.size(); i++) {
             if (input.equalsIgnoreCase(areaList.get(i).getAreaName())) {
                 return i;
             }
         }
         return -1;
+    }
+
+    public static String fetchAreaName(int index) {
+        return areaList.get(index).getAreaName();
     }
 
     public void fileReader() {
@@ -68,11 +68,17 @@ public class Game {
                     String description = areaReader.nextLine();
                     String indexList = areaReader.nextLine();
                     ArrayList<Integer> borderingAreas = new ArrayList<>();
-                    String[] borderAreas = indexList.split(" ");
+                    String [] borderAreas = indexList.split(" ");
                     for (int i = 0; i < borderAreas.length; i++) {
                         borderingAreas.add(Integer.parseInt(borderAreas[i]));
                     }
-                    areaList.add(new Area(areaName, description, borderingAreas));
+                    String items = areaReader.nextLine();
+                    ArrayList<String> itemsinRoom = new ArrayList<>();
+                    String[] possibleItems = items.split(",");
+                    for (int i = 0; i < possibleItems.length; i++) {
+                        itemsinRoom.add(possibleItems[i]);
+                    }
+                    areaList.add(new Area(areaName, description, borderingAreas, itemsinRoom));
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
