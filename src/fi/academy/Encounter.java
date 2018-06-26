@@ -6,18 +6,21 @@ public class Encounter {
     private String eventname;
     private String description;
     private boolean hashappened;
-
+    private String events;
 
     private ArrayList<String> encounterConditions;
 
-    public Encounter(ArrayList<String> encounterConditions, String eventname, String description) {
-        this.eventname = eventname;
+    public Encounter(ArrayList<String> encounterConditions, String eventName, String description, String events) {
+        this.eventname = eventName;
         this.description = description;
         this.encounterConditions = encounterConditions;
         this.hashappened = false;
-
+        this.events = events;
     }
 
+    public String getEvents() {
+        return events;
+    }
 
     public String getEventname() {
         return eventname;
@@ -27,11 +30,11 @@ public class Encounter {
         return description;
     }
 
-    public boolean gethashappened() {
+    public boolean getHasHappened() {
         return hashappened;
     }
 
-    public void setHashappened(boolean value) {
+    public void setHasHappened(boolean value) {
         hashappened = value;
     }
 

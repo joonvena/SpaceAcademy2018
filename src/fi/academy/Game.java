@@ -2,11 +2,11 @@ package fi.academy;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.*;
 
 public class Game {
     static int currentArea = 0;
+    static int points = 0;
     static List<Area> areaList = new ArrayList<>();
     static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
@@ -80,7 +80,7 @@ public class Game {
         for (int i = 0; i < encounter.getConditions().size(); i++) {
             String checkCond = encounter.getConditions().get(i);
             System.out.println(checkCond);
-            if (conditions.get(checkCond) && (encounter.gethashappened() == false)) {
+            if (conditions.get(checkCond) && (encounter.getHasHappened() == false)) {
                         return true;
                     }
                 }
@@ -89,8 +89,41 @@ public class Game {
 
     static String encounterHappens(String encounterName) {
         Encounter encounter = encounters.get(encounterName);
-        return encounter.getDescription();
+        String[] commands = encounter.getEvents().split(",");
+        for (String command: commands) {
+            String[] comm = command.split(" ",2);
+            switch (comm[0]) {
+                case "goto": {
+                    int nextArea = fetchAreaID(comm[1]);
+                    if (nextArea != -1) {
+                        currentArea = nextArea;
+                    }
+                    break;
+                }
+                case "get": {
+                    inventory.add(comm[1]);
+                    break;
+                }
+                case "lose": {
+                    inventory.remove(comm[1]);
+                    break;
+                }
+                case "win": {
+                    // Win screen
+                    break;
+                }
+                case "end": {
+                    // Lose screen
+                    System.out.println("You lose! You had " + points+".");
+                }
+                case "gain": {
+                    points+=Integer.parseInt(comm[1]);
+                }
+            }
 
+        }
+        encounter.setHasHappened(true);
+        return encounter.getDescription();
     }
             
 
@@ -143,7 +176,8 @@ public class Game {
                 for (int i = 0; i < condition.length; i++) {
                     conditions.add(condition[i]);
                 }
-                encounters.put(encounterName, new Encounter(conditions, encounterName, encounterDescription));
+                String events = encounterReader.nextLine();
+                encounters.put(encounterName, new Encounter(conditions, encounterName, encounterDescription, events));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
