@@ -9,6 +9,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static fi.academy.Game.*;
 
 public class Controller {
@@ -27,11 +30,14 @@ public class Controller {
     protected void parseCommand(ActionEvent event) {
         String input = commandInput.getText();
         commandParser(input);
-        System.out.println(currentArea);
         Area thisArea = areaList.get(currentArea);
+        conditions.put("GruisAlive", true);
+        conditions.put("GruisAngry", true);
+        for(int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
+            Game.encounterCheck(thisArea.getEncountersinRoom().get(i));
+        }
         String borderAreas = "";
         String allItems = "";
-
         for (int i = 0; i < thisArea.getBorderingAreas().size(); i++) {
             borderAreas += "  " + fetchAreaName(i);
         }
@@ -40,10 +46,14 @@ public class Controller {
             allItems += "  " + thisArea.getItemList().get(i);
         }
 
+
+
+
         Text text1 = new Text("\nYou are in "+thisArea.getAreaName()+"\n");
         Text text2 = new Text(thisArea.getDescription()+"\n");
         Text text3 = new Text("Adjacent areas: "+borderAreas+"\n");
         Text text4 = new Text("Items in room: "+allItems+"\n");
+        System.out.println(encounters);
         output.getChildren().addAll(new Text(input+"\n\n"), text1, text2, text3, text4);
 
         System.out.println(commandInput.getText());

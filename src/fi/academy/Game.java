@@ -3,17 +3,17 @@ package fi.academy;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     static int currentArea = 0;
     static List<Area> areaList = new ArrayList<>();
+    static HashMap<String, Boolean> conditions = new HashMap<>();
+    static HashMap<String, Encounter> encounters = new HashMap<>();
 
     public void start() {
         fileReader();
+        encounterReader();
     }
 
     public static void commandParser(String input) {
@@ -40,9 +40,18 @@ public class Game {
         return -1;
     }
 
-    private void eventCheck(int currentArea) {
-    }
-
+    static void encounterCheck(String encounterName) {
+        System.out.println(encounterName);
+        Encounter encounter = encounters.get(encounterName);
+        for (int i = 0; i < encounter.getConditions().size(); i++) {
+            String checkCond = encounter.getConditions().get(i);
+            System.out.println(checkCond);
+            if (conditions.get(checkCond)) {
+                        System.out.print(encounter.getDescription());
+                    }
+                }
+            }
+            
 
     public static String fetchAreaName(int index) {
         return areaList.get(index).getAreaName();
@@ -79,43 +88,38 @@ public class Game {
             System.out.println("Error: " + e.getMessage());
         }
     }
-}
 
 
-
-
-
-/* possible Encounter-list for future use
-    public ArrayList<Encounter> encounterReader() {
+    public void encounterReader() {
         try (Scanner encounterReader = new Scanner(new File("./assets/encounters.dat"))) {
             while (encounterReader.hasNextLine()) {
                 ArrayList<Encounter> encountersInRoom = new ArrayList<>();
                 String encounterName = encounterReader.nextLine();
-                boolean hashappened = false;
-                String encounterList = encounterReader.nextLine();
-                ArrayList<String> whatwillhappen = new ArrayList<>();
-                String[] encounters = encounterList.split(" ");
-                for (int i = 0; i < encounters.length; i++) {
-                    whatwillhappen.add(encounters[i]);
+                String encounterDescription = encounterReader.nextLine();
+                ArrayList<String> conditions = new ArrayList<>();
+                String conditionList = encounterReader.nextLine();
+                String[] condition = conditionList.split(",");
+                for (int i = 0; i < condition.length; i++) {
+                    conditions.add(condition[i]);
                 }
-                String items = encounterReader.nextLine();
-                ArrayList<String> itemsinRoom = new ArrayList<>();
-                String[] possibleItems = items.split(",");
-                for (int i = 0; i < possibleItems.length; i++) {
-                    itemsinRoom.add(possibleItems[i]);
-                }
-                encountersInRoom.add(new Encounter(encounterName, hashappened, whatwillhappen));
+                encounters.put(encounterName, new Encounter(encounterName, encounterDescription, conditions));
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
         }
-        ArrayList<Encounter> encounters = new ArrayList<>();
-        return encounters;
+
 
     }
 }
-*/
+
+
+
+
+
+
+
+
 
 
 

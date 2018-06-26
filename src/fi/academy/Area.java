@@ -7,8 +7,6 @@ public class Area {
     private String description;
     private ArrayList<Integer> borderingAreas;
     private ArrayList<String> itemList;
-
-
     private ArrayList<String> encountersinRoom;
 
     public Area(String areaName, String description, ArrayList<Integer> borderingAreas, ArrayList<String> itemList, ArrayList<String> encountersinRoom) {
