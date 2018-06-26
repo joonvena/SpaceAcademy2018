@@ -7,12 +7,14 @@ public class Area {
     private String description;
     private ArrayList<Integer> borderingAreas;
     private ArrayList<String> itemList;
+    private ArrayList<String> encountersinRoom;
 
-    public Area(String areaName, String description, ArrayList<Integer> borderingAreas, ArrayList<String> itemList) {
+    public Area(String areaName, String description, ArrayList<Integer> borderingAreas, ArrayList<String> itemList, ArrayList<String> encountersinRoom) {
         this.areaName = areaName;
         this.description = description;
         this.borderingAreas = borderingAreas;
         this.itemList = itemList;
+        this.encountersinRoom = encountersinRoom;
     }
 
     public String getAreaName() {
@@ -37,7 +39,7 @@ public class Area {
         return " Areaname: " + areaName +
                 ", description='" + description + '\'' +
                 ", borderingAreas=" + borderAreas +
-                '}' + "items in the room= " + itemList;
+                '}' + "items in the room= " + itemList + "Events in the room" + encountersinRoom;
     }
 
     public ArrayList<String> getItemList() {
