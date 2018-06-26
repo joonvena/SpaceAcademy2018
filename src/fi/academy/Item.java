@@ -8,6 +8,7 @@ public class Item {
 
     private String itemName;
     private String itemDescription;
+    private String itemEvent;
     private boolean heavy;
 
     public Item(String itemName, String itemDescription, boolean heavy) {
@@ -24,6 +25,9 @@ public class Item {
         return itemDescription;
     }
 
+    public String getItemEvent() {
+        return itemEvent;
+    }
 
 
 
