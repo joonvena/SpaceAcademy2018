@@ -14,24 +14,9 @@ public class Game {
 
     public void start() {
         fileReader();
-        Scanner reader = new Scanner(System.in);
-        ArrayList<Integer> borderings = new ArrayList<>();
-        borderings.add(0);
-        borderings.add(1);
-
-
-        //game loop
-        while(true) {
-            System.out.println("You are in" + areaList.get(currentArea));
-            String input = reader.nextLine();
-            commandParser(input);
-        }
-
     }
 
-
-    public void commandParser(String input) {
-//        input = input.toLowerCase();
+    public static void commandParser(String input) {
         String [] command = input.split(" ", 2);
         switch(command[0]) {
             case "goto": {
@@ -46,7 +31,7 @@ public class Game {
         }
     }
 
-    public int fetchAreaID(String input) {
+    public static int fetchAreaID(String input) {
         for (int i = 0; i < areaList.size(); i++) {
             if (input.equalsIgnoreCase(areaList.get(i).getAreaName())) {
                 return i;
