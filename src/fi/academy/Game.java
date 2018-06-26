@@ -52,6 +52,7 @@ public class Game {
     }
 
     private void eventCheck(int currentArea) {
+        
     }
 
 
@@ -91,6 +92,11 @@ public class Game {
         }
     }
 }
+
+
+
+
+
 /* possible Encounter-list for future use
     public ArrayList<Encounter> encounterReader() {
         try (Scanner encounterReader = new Scanner(new File("./assets/encounters.dat"))) {

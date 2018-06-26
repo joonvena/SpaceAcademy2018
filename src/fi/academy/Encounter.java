@@ -1,28 +1,36 @@
 package fi.academy;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Encounter {
     private String eventname;
+    private String description;
     private boolean hashappened;
-    private List<String> whathappens;
+    private ArrayList<String> conditions;
 
-
-    public Encounter(String eventname, boolean hashappened, List<String> whathappens) {
+    public Encounter(String eventname, String description, ArrayList<String> conditions) {
         this.eventname = eventname;
-        this.hashappened = hashappened;
-        this.whathappens = whathappens;
+        this.description = description;
+        this.conditions = conditions;
+        this.hashappened = false;
     }
+
 
     public String getEventname() {
         return eventname;
     }
 
-    public boolean Hashappened() {
+    public String getDescription() {
+    return description;
+    }
+
+    public boolean gethashappened() {
         return hashappened;
     }
 
-    public List<String> getWhathappens() {
-        return whathappens;
+    public void setHashappened() {
+        hashappened = false;
     }
 }
+
+

@@ -7,6 +7,8 @@ public class Area {
     private String description;
     private ArrayList<Integer> borderingAreas;
     private ArrayList<String> itemList;
+
+
     private ArrayList<String> encountersinRoom;
 
     public Area(String areaName, String description, ArrayList<Integer> borderingAreas, ArrayList<String> itemList, ArrayList<String> encountersinRoom) {
@@ -41,6 +43,11 @@ public class Area {
                 ", borderingAreas=" + borderAreas +
                 '}' + "items in the room= " + itemList + "Events in the room" + encountersinRoom;
     }
+
+    public ArrayList<String> getEncountersinRoom() {
+        return encountersinRoom;
+    }
+
 
     public ArrayList<String> getItemList() {
         return itemList;
