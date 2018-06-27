@@ -93,9 +93,12 @@ public class Game {
         Encounter encounter = encounters.get(encounterName);
         if (!encounterName.equals(".")) {
             for (int i = 0; i < encounter.getConditions().size(); i++) {
+                System.out.println(encounter.getConditions().size());
                 String checkCond = encounter.getConditions().get(i);
-                System.out.println(checkCond);
-                if (conditions.get(checkCond) && (encounter.getHasHappened() == false)) {
+                if(checkCond.equals(".")) {
+                    return true;
+                }
+                if ((conditions.get(checkCond)) && (encounter.getHasHappened() == false)) {
                     return true;
                 }
             }
