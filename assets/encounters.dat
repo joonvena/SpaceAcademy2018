@@ -1,3 +1,7 @@
+nade
+The nade goes BOOM! You sure did cause some damage!
+.
+damage 6,lose grenade,set monsterIsAngry
 startGame
 It's cold... I'm shivering and my limbs feel stiff as I crawl out of a cryogenic pod. How long have I been here? What has happened here?
 .
@@ -10,10 +14,6 @@ huntBegins
 Suddenly, the loudspeakers on the walls sound a blaring alarm! BLEEP! BLEEP! BLEEP! The sound of hydraulics hissing somewhere within the walls is deafening. Simultaneously, something large and sinister stirs somewhere near and lets out a loud, high-pitched screech. Whatever it was, it didn't sound friendly. The hunt is on!
 .
 set shitHitTheFan,damage 4
-OxygenisGone
-Oxygen disappears
-NoOxygen
-end game
 grenade
 The grenade goes BOOM! You sure did cause some damage!
 .
@@ -22,22 +22,14 @@ pistol
 BANG! BANG! You make bullet holes in everything near you! You feel really manly now!
 clip
 damage 4,lose clip
-motion scanner
-The scanner goes BEEP!
-GruisAlive
-get sword,clear GruisAlive
-dumbbell
-Wow you feel strong! Well, not really. Your muscles are atrophied. Zero gravity does that to people.
-GruisAlive
-get muscles
+clip
+You can't lose clip like that. Try using a pistol while you have a clip in your inventory.
+.
+.
 jumpsuit
 It's a green-and-gray polymer jumpsuit that kept you nice and comfy while you took a cryogenic nap. Type "drop jumpsuit" if you want to be naked! (Come on, don't be weird!)
-GruisAlive
-gain 1
-manual
-"Space Academy - become an astronaut in 12 weeks! All you need to know is that "goto bio lab" moves you, and you can also "take", "drop", and "use" items you find! Very easy, isn't it? What could possibly go wrong?"
-GruisAlive
-gain 3
+.
+.
 fumble
 You fumble around while babbling incomprehensibly. You lose time, which is the only thing worth a damn in this life. Maybe next time you'll think about what you will use or take or where will you go to?
 .
@@ -60,5 +52,25 @@ heavy rock
 heavy, set jotain
 tooHeavy
 The item you are trying to pick up is too heavy!
+.
+.
+monsterKills
+The monster tears your chest open with its claws and chomps off your head with a swift bite.
+.
+move LoseLose
+monsterAppears
+The monster drops down from a ventilation pipe and lands right in front of you!
+.
+.
+monsterOverhead
+You hear loud rumbling in the ventilation pipes directly above you!
+.
+.
+monsterNear
+You hear some noise coming from the ventilation pipes somewhere above you.
+.
+.
+monsterFar
+You hear faint sounds echoing through the ventilation system.
 .
 .

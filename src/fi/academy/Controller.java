@@ -36,22 +36,22 @@ public class Controller {
         commandParser(input);
         output.getChildren().addAll((new Text("> "+input+"\n\n")));
         if (errorMessage == true) {
-            Text text5 = new Text(Game.encounterHappens("fumble"));
-            text5.setStyle("-fx-font-style: italic");
-            output.getChildren().addAll(text5, new Text ("\n\n"));
+            errorMessage = false;
+            Text text = new Text(Game.encounterHappens("fumble"));
+            text.setStyle("-fx-font-style: italic");
+            output.getChildren().addAll(text, new Text ("\n\n"));
         }
 
-        // If G.R.U.E. has been awakened, decrease the timer
-        if (flaglist.contains("shitHitTheFan")) {
-            hurt--;
-            System.out.println(hurt);
-            if (hurt<=0) {
-                hurt = 0;
-                System.out.println("The monster appears!");
-            }
-            // decrease timer THEN if 0, monster appears!
-        }
+        Area thisArea = areaList.get(currentArea);
+        itemEvent();
+        monsterEvent();
+        areaEvent(thisArea);
+        displayArea(thisArea);
+        commandInput.clear();
+        updateGUI();
+    }
 
+    public void itemEvent () {
         // If previous command triggered an item event, activate the event
         if (!lastItemUsed.equals(" ")) {
             Text t = new Text(Game.encounterHappens(lastItemUsed)+"\n\n");
@@ -59,9 +59,33 @@ public class Controller {
             output.getChildren().addAll(t);
             lastItemUsed = " ";
         }
+    }
 
+    public void monsterEvent () {
+        // If G.R.U.E. has been awakened, decrease the timer
+        if (flaglist.contains("shitHitTheFan")) {
+            hurt--;
+            System.out.println(hurt);
+            Text text = null;
+            switch (hurt) {
+                case -1: text = new Text (encounterHappens("monsterKills")+"\n\n");
+                    break;
+                case 0: text = new Text (encounterHappens("monsterAppears")+"\n\n");
+                    break;
+                case 1: text = new Text (encounterHappens("monsterOverhead")+"\n\n");
+                    break;
+                case 2: text = new Text (encounterHappens("monsterNear")+"\n\n");
+                    break;
+                case 3: text = new Text (encounterHappens("monsterFar")+"\n\n");
+                    break;
+            }
+            text.setStyle("-fx-font-style: italic");
+            output.getChildren().addAll(text);
+        }
+    }
+
+    public void areaEvent (Area thisArea) {
         // If current area has encounters and their conditions are true, activate the encounters
-        Area thisArea = areaList.get(currentArea);
         if(!thisArea.getEncountersinRoom().contains(".")) {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
@@ -71,7 +95,9 @@ public class Controller {
                 }
             }
         }
+    }
 
+    public void displayArea(Area thisArea) {
         String borderAreas = "";
         String allItems = "";
         for (int i = 0; i < thisArea.getBorderingAreas().size(); i++) {
@@ -90,9 +116,6 @@ public class Controller {
         Text text3 = new Text("Adjacent areas: "+borderAreas+"\n");
         Text text4 = new Text("Items in room: "+allItems+"\n");
         output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
-        errorMessage = false;
-        commandInput.clear();
-        updateGUI();
     }
 
     public void updateGUI() {

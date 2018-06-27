@@ -1,7 +1,7 @@
 Cryogenics
 Cryogenic pods line the walls of this round room. One of the pods is open.
 1 2
-pod,frozen creature,manual,grenade,grenade,grenade,pistol,clip,clip
+pod,frozen creature,grenade,grenade,grenade,pistol,clip,clip
 startGame
 Bio Lab
 This laboratory is equipped with advanced biomedical equipment.
@@ -46,42 +46,42 @@ beds,doctor's log #1,dead scientist
 FIXRobotics
 This area is intended for the storage and maintenance of different kinds of robots.
 4 10 11
-wire
+cleaner bot,toolkit,robot parts,wire
 .
 FIXServer Room
 The solar panels make the station go round round round. (Not literally, that's the gravity.)
 9 12
-wire
+terminal computer,doctor's log #4,wire,oxygen control computer
 .
 FIXReactor
 Oxygen-generating machinery. Cseeeeeh-puff. Cheeeeeh-puff.
 9 12
-oxygen candle
+broken robot,reactor computer,oxygen candle
 .
 FIXEngine Room
 Smell of machine oil. Beds, stuff, whatever.
 10 11
-oil can,wrench
+engines,oil can,wrench,engine room computer
 .
 FIXComms
 All kinds of radios and stuff that beeps. BEEP!
 4 14 15
-juicy berries
+radio,motion scanner
 .
 FIXAstrogation
 A shuttle is docked to the airlock.
 13 16
-screwdriver
+radar,star map,astrogation computer,controls
 .
 FIXStorage
 The way to GTFO here!
 13 16
 lots of stuff
 .
-FIXAirlock
-The way to GTFO here!
+Airlock
+The airlock ensures safe passage between the space station and any vessel outside the station.
 14 15 17
-locked door
+airlock computer,locked door
 .
 Escape Pod
 This small shuttle can take you away from the scape station.

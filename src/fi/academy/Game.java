@@ -22,7 +22,6 @@ public class Game {
     }
 
     public static void commandParser(String input) {
-        try {
             String[] command = input.split(" ", 2);
             switch (command[0]) {
                 case "goto": {
@@ -76,10 +75,8 @@ public class Game {
                 }
             }
         }
-        catch (Exception e) {
-            errorMessage = true;
-        }
-    }
+
+
 
     public static void getItem (String input) {
         List itemsInRoom = areaList.get(currentArea).getItemList();
