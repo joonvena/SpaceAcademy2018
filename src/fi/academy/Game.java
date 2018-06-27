@@ -34,7 +34,12 @@ public class Game {
                     break;
                 }
                 case "take": {
-                    getItem(command[1]);
+                    Encounter encounter = encounters.get(command[1]);
+                    if(!encounter.getEvents().contains("heavy")) {
+                        getItem(command[1]);
+                    } else {
+                        lastItemUsed = "tooHeavy";
+                    }
                     break;
                 }
                 case "drop": {
@@ -144,6 +149,10 @@ public class Game {
                 }
                 case "lose": {
                     inventory.remove(comm[1]);
+                    break;
+                }
+                case "disable": {
+                    areaList.get(currentArea).getItemList().remove(comm[1]);
                     break;
                 }
                 case "win": {

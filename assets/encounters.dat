@@ -41,8 +41,16 @@ answer hello world
 lab computerOK
 The computer opens!
 .
-.
+disable lab computer
 accessDenied
 The computer says "Access denied"
+.
+.
+heavy rock
+.
+.
+heavy, set jotain
+tooHeavy
+The item you are trying to pick up is too heavy!
 .
 .
