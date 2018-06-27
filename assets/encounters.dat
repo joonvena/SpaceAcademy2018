@@ -2,13 +2,10 @@ startGame
 It's cold... I'm shivering and my limbs feel stiff as I crawl out of a cryogenic pod. How long have I been here? What has happened here?
 .
 get jumpsuit
-<<<<<<< Updated upstream
 steamSeen
 Hot steam is leaking into the access corridor ahead. Looks dangerous, I'd better not go there until I've fixed the problem!
 .
 get jumpsuit,set GruisAlive
-=======
->>>>>>> Stashed changes
 OxygenisGone
 Oxygen disappears
 NoOxygen
@@ -33,3 +30,19 @@ manual
 "Space Academy - become an astronaut in 12 weeks! All you need to know is that "goto bio lab" moves you, and you can also "take", "drop", and "use" items you find! Very easy, isn't it? What could possibly go wrong?"
 GruisAlive
 gain 3
+fumble
+You fumble around while babbling incomprehensibly. You lose time, which is the only thing worth a damn in this life. Maybe next time you'll think about what you will use or take or where will you go to?
+.
+.
+lab computer
+The computer buzzes and prints: "What is the first line written if learning a new technology"
+.
+answer youareface
+lab computerOK
+The computer opens!
+.
+.
+accessDenied
+The computer says "Access denied"
+.
+.

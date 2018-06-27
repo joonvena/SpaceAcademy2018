@@ -33,6 +33,11 @@ public class Controller {
         String input = commandInput.getText();
         commandParser(input);
         output.getChildren().addAll((new Text("> "+input+"\n\n")));
+        if (errorMessage == true) {
+            Text text5 = new Text(Game.encounterHappens("fumble"));
+            text5.setStyle("-fx-font-style: italic");
+            output.getChildren().addAll(text5, new Text ("\n\n"));
+        }
         if (!lastItemUsed.equals(" ")) {
             Text t = new Text(Game.encounterHappens(lastItemUsed));
             t.setStyle("-fx-font-style: italic");
@@ -47,7 +52,6 @@ public class Controller {
                     text5.setStyle("-fx-font-style: italic");
                     output.getChildren().addAll(text5, new Text ("\n\n"));
                 }
-                ;
             }
         }
         String borderAreas = "";
@@ -65,7 +69,7 @@ public class Controller {
         Text text3 = new Text("Adjacent areas: "+borderAreas+"\n");
         Text text4 = new Text("Items in room: "+allItems+"\n");
         output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
-
+        errorMessage = false;
         commandInput.clear();
         updateGUI();
     }

@@ -13,6 +13,7 @@ public class Game {
     static HashMap<String, Encounter> encounters = new HashMap<>();
     static List<String> inventory = new ArrayList<>();
     static List<String> flaglist = new ArrayList<>();
+    static boolean errorMessage = false;
 
     public void start() {
         fileReader();
@@ -20,44 +21,56 @@ public class Game {
     }
 
     public static void commandParser(String input) {
-        String[] command = input.split(" ", 2);
-        switch (command[0]) {
-            case "goto": {
-                int nextArea = fetchAreaID(command[1]);
-                if (nextArea != -1) {
-                    currentArea = nextArea;
-                } else {
-                    System.out.println("Can't go there!");
-                }
-                break;
-            }
-            case "take": {
-                getItem(command[1]);
-                break;
-            }
-            case "drop": {
-                loseItem(command[1]);
-                break;
-            }
-            case "use": {
-                if(command[1].contains("computer")) {
-                    String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
-                    if(command[1].length() > computerName.length()) {
-                        String answer = command[1].substring((command[1].indexOf("computer")) + 9, command[1].indexOf("answer") + 6);
-                        //TODO answer check method
+        try {
+            String[] command = input.split(" ", 2);
+            switch (command[0]) {
+                case "goto": {
+                    int nextArea = fetchAreaID(command[1]);
+                    if (nextArea != -1) {
+                        currentArea = nextArea;
                     } else {
-                        //encounterHappens(command[1]);
+                        System.out.println("Can't go there!");
                     }
+                    break;
                 }
-                if(inventory.contains(command[1]) && (encounters.get(command[1])!=null)) {
-                    lastItemUsed = command[1];
-                    System.out.println("Something happens");
+                case "take": {
+                    getItem(command[1]);
+                    break;
                 }
-                else {
-                    System.out.println("You don't have such an item!");
+                case "drop": {
+                    loseItem(command[1]);
+                    break;
                 }
-                break;
+                case "use": {
+                    String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
+                    if (command[1].contains("computer") && areaList.get(currentArea).getItemList().contains(computerName)) {
+                        if (command[1].length() > computerName.length()) {
+                            String answer = command[1].substring(command[1].indexOf("computer") + 9);
+                            System.out.println(answer);
+                            Encounter encounter = encounters.get(computerName);
+                            for (int i = 0; i < encounter.get; i++) {
+                            if (encounter.getEvents().get(i).equals("answer " + answer)) {
+                                lastItemUsed = computerName + "OK";
+                            }
+                            } else {
+                                lastItemUsed = "accessDenied";
+                            }
+                        } else {
+                            lastItemUsed = computerName;
+                        }
+                    }
+                    if (inventory.contains(command[1]) && (encounters.get(command[1]) != null)) {
+                        lastItemUsed = command[1];
+                        System.out.println("Something happens");
+                    } else {
+                        System.out.println("You don't have such an item!");
+                    }
+                    break;
+                }
             }
+        }
+        catch (Exception e) {
+            errorMessage = true;
         }
     }
 
@@ -153,6 +166,9 @@ public class Game {
                 }
                 case "call": {
                     encounterHappens(comm[1]);
+                    break;
+                }
+                case "answer": {
                     break;
                 }
             }
