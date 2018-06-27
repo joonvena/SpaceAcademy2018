@@ -15,6 +15,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
         stage.setTitle("Space Academy");
         stage.setScene(new Scene(root));
+        stage.centerOnScreen();
         stage.show();
     }
 
