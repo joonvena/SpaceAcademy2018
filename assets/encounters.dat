@@ -28,6 +28,10 @@ You can't lose clip like that. Try using a pistol while you have a clip in your 
 .
 jumpsuit
 It's a green-and-gray polymer jumpsuit that kept you nice and comfy while you took a cryogenic nap. Type "drop jumpsuit" if you want to be naked! (Come on, don't be weird!)
+GruisAlive
+gain 1
+manual
+Space Academy - 12 weeks! 
 .
 .
 fumble
@@ -37,7 +41,7 @@ You fumble around while babbling incomprehensibly. You lose time, which is the o
 lab computer
 The computer buzzes and prints: "What is the first line written if learning a new technology"
 .
-answer hello world
+heavy,answer hello world
 lab computerOK
 The computer opens!
 .
@@ -49,7 +53,7 @@ The computer says "Access denied"
 heavy rock
 .
 .
-heavy, set jotain
+heavy,set jotain
 tooHeavy
 The item you are trying to pick up is too heavy!
 .

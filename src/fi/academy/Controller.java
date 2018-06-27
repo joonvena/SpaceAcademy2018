@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -28,8 +29,14 @@ public class Controller {
     private TextFlow inventory;
 
     @FXML
+    private ScrollPane Scroll;
+
+    @FXML
     protected void parseCommand(ActionEvent event) {
-        output.getChildren().clear();
+        output.heightProperty().addListener(observable -> Scroll.setVvalue(1D));
+        Scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        /*Scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);*/
+        output.getChildren();
 
         // Get command from text box, parse it
         String input = commandInput.getText();
@@ -110,17 +117,34 @@ public class Controller {
             if (i < thisArea.getItemList().size()-1) allItems += ", ";
         }
 
-        Text text1 = new Text("You are in "+thisArea.getAreaName()+".\n\n");
-        text1.setStyle("-fx-font-weight: bold");
-        Text text2 = new Text(thisArea.getDescription()+"\n\n");
+        Text text1 = new Text("\nYou are in: ");
+        Text text5 = new Text(thisArea.getAreaName()+"\n");
+        Text text2 = new Text(thisArea.getDescription()+"\n");
         Text text3 = new Text("Adjacent areas: "+borderAreas+"\n");
         Text text4 = new Text("Items in room: "+allItems+"\n");
         output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
+
+        text1.setFill(Color.WHITE);
+        text1.setStyle("-fx-font-weight: bold; -fx-font-style: italic;");
+        text5.setFill(Color.RED);
+        text5.setStyle("-fx-font-weight: bold;");
+        text2.setFill(Color.WHITE);
+        text3.setFill(Color.WHITE);
+        text4.setFill(Color.WHITE);
+        text4.setStyle("-fx-font-weight: bold");
+
+
+        output.getChildren().addAll(text1, text5, text2, text3, text4, new Text("\n\n"));
+        errorMessage = false;
+        commandInput.clear();
+        updateGUI();
     }
 
     public void updateGUI() {
         // Update all GUI elements according to current game state!
         inventory.getChildren().clear();
+        System.out.println("This is test");
+        System.out.println(Game.inventory);
         for (String item : Game.inventory) {
             inventory.getChildren().addAll(new Text(item+"\n"));
         }
