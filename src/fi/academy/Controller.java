@@ -38,11 +38,14 @@ public class Controller {
         Area thisArea = areaList.get(currentArea);
         conditions.put("GruisAlive", true);
         conditions.put("GruisAngry", true);
-        for(int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
-            if(Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
-                Text text5 = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
-                output.getChildren().addAll(new Text(input+"\n\n"), text5);
-            };
+        if(!thisArea.getEncountersinRoom().contains(".")) {
+            for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
+                if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
+                    Text text5 = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
+                    output.getChildren().addAll(new Text(input + "\n\n"), text5);
+                }
+                ;
+            }
         }
         String borderAreas = "";
         String allItems = "";

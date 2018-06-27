@@ -12,6 +12,7 @@ public class Game {
     static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
     static List<String> inventory = new ArrayList<>();
+    static List<String> flaglist = new ArrayList<>();
 
     public void start() {
         fileReader();
@@ -39,6 +40,9 @@ public class Game {
                 break;
             }
             case "use": {
+                if(command[1].contains("computer") &&(!command[1].contains(" "))) {
+                    encounterHappens(command[1]);
+                }
                 if(inventory.contains(command[1]) && (encounters.get(command[1])!=null)) {
                     lastItemUsed = command[1];
                     System.out.println("Something happens");
@@ -87,13 +91,15 @@ public class Game {
     static boolean encounterCheck(String encounterName) {
         System.out.println(encounterName);
         Encounter encounter = encounters.get(encounterName);
-        for (int i = 0; i < encounter.getConditions().size(); i++) {
-            String checkCond = encounter.getConditions().get(i);
-            System.out.println(checkCond);
-            if (conditions.get(checkCond) && (encounter.getHasHappened() == false)) {
-                        return true;
-                    }
+        if (!encounterName.equals(".")) {
+            for (int i = 0; i < encounter.getConditions().size(); i++) {
+                String checkCond = encounter.getConditions().get(i);
+                System.out.println(checkCond);
+                if (conditions.get(checkCond) && (encounter.getHasHappened() == false)) {
+                    return true;
                 }
+            }
+        }
                 return false;
             }
 
@@ -128,6 +134,18 @@ public class Game {
                 }
                 case "gain": {
                     points+=Integer.parseInt(comm[1]);
+                }
+                case "set": {
+                    flaglist.add(comm[1]);
+                    break;
+                }
+                case "clear": {
+                    flaglist.add(comm[1]);
+                    break;
+                }
+                case "call": {
+                    encounterHappens(comm[1]);
+                    break;
                 }
             }
 
