@@ -32,9 +32,9 @@ public class Controller {
         output.getChildren().clear();
         String input = commandInput.getText();
         commandParser(input);
+        output.getChildren().addAll((new Text("> "+input+"\n\n")));
         if (!lastItemUsed.equals(" ")) {
             Text t = new Text(Game.encounterHappens(lastItemUsed));
-            t.setFill(Color.BLUE);
             t.setStyle("-fx-font-style: italic");
             output.getChildren().addAll(t);
             lastItemUsed = " ";
@@ -44,9 +44,8 @@ public class Controller {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
                     Text text5 = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
-                    text5.setFill(Color.BLUE);
                     text5.setStyle("-fx-font-style: italic");
-                    output.getChildren().addAll(new Text(input + "\n\n"), text5);
+                    output.getChildren().addAll(text5, new Text ("\n\n"));
                 }
                 ;
             }
@@ -61,14 +60,12 @@ public class Controller {
             allItems += "  " + thisArea.getItemList().get(i);
         }
 
-        Text text1 = new Text("\nYou are in "+thisArea.getAreaName()+"\n");
+        Text text1 = new Text("You are in "+thisArea.getAreaName()+"\n");
         Text text2 = new Text(thisArea.getDescription()+"\n");
         Text text3 = new Text("Adjacent areas: "+borderAreas+"\n");
         Text text4 = new Text("Items in room: "+allItems+"\n");
-        System.out.println(encounters);
-        output.getChildren().addAll(new Text(input+"\n\n"), text1, text2, text3, text4);
+        output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
 
-        System.out.println(commandInput.getText());
         commandInput.clear();
         updateGUI();
     }
@@ -78,6 +75,10 @@ public class Controller {
         inventory.getChildren().clear();
         for (String item : Game.inventory) {
             inventory.getChildren().addAll(new Text(item+"\n"));
+        }
+        // This is ONLY for debugging purposes! Not intended for players to see!
+        for (String flag : Game.flaglist) {
+            inventory.getChildren().addAll(new Text(flag+"\n"));
         }
     }
 }
