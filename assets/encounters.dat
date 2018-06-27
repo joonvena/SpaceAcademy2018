@@ -2,22 +2,25 @@ startGame
 It's cold... I'm shivering and my limbs feel stiff as I crawl out of a cryogenic pod. How long have I been here? What has happened here?
 .
 get jumpsuit
+<<<<<<< Updated upstream
 steamSeen
 Hot steam is leaking into the access corridor ahead. Looks dangerous, I'd better not go there until I've fixed the problem!
 .
 get jumpsuit,set GruisAlive
+=======
+>>>>>>> Stashed changes
 OxygenisGone
 Oxygen disappears
 NoOxygen
 end game
 grenade
 The grenade goes BOOM! You sure did cause some damage!
-GruisAlive
-lose grenade,damage 6,clear EventTest
+.
+lose grenade,damage 6,set GruisAlive
 motion scanner
 The scanner goes BEEP!
 GruisAlive
-get sword
+get sword,clear GruisAlive
 dumbbell
 Wow you feel strong! Well, not really. Your muscles are atrophied. Zero gravity does that to people.
 GruisAlive

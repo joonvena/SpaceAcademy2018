@@ -6,18 +6,30 @@ startGame
 Bio Lab
 This laboratory is equipped with advanced biomedical equipment.
 0 3
+<<<<<<< Updated upstream
 samples,microscope,chemicals,doctor's log #3
 .
 Hydroponics
 This laboratory contains many rows of plastic containers with mineral nutrient solutions in a water solvent. Plants of many different kinds grow in the containers, filling the room with a rich array of scents.
+=======
+
+grenade
+???
+Smells like one too.
+>>>>>>> Stashed changes
 0 3
 apples,carrots,lettuce,onions,oranges,radishes
 .
 Med Bay
 An antiseptic smell billows forth from many medical containers strewn about the floor and tables in this room.
 1 2 4
+<<<<<<< Updated upstream
 scalpel,dead man,needle,medical scanner
 steamSeen
+=======
+dumbbell
+motion scanner
+>>>>>>> Stashed changes
 Access Hub
 This ring-shaped access module connects the four wings of the Space Academy station: the Science Wing, Living Quarters, Engineering, and Astrogation. Blood spatters stain the floor, walls, and ceiling of this area.
 3 5 9 13

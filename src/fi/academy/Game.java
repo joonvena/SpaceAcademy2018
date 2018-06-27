@@ -40,8 +40,14 @@ public class Game {
                 break;
             }
             case "use": {
-                if(command[1].contains("computer") &&(!command[1].contains(" "))) {
-                    encounterHappens(command[1]);
+                if(command[1].contains("computer")) {
+                    String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
+                    if(command[1].length() > computerName.length()) {
+                        String answer = command[1].substring((command[1].indexOf("computer")) + 9, command[1].indexOf("answer") + 6);
+                        //TODO answer check method
+                    } else {
+                        //encounterHappens(command[1]);
+                    }
                 }
                 if(inventory.contains(command[1]) && (encounters.get(command[1])!=null)) {
                     lastItemUsed = command[1];
