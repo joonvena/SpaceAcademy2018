@@ -7,6 +7,7 @@ import java.util.*;
 public class Game {
     static int currentArea = 0;
     static int points = 0;
+    static int hurt = 0; // Indicates how many rounds the monster waits until its next attack!
     static String lastItemUsed = " ";
     static List<Area> areaList = new ArrayList<>();
 //    static HashMap<String, Boolean> conditions = new HashMap<>();
@@ -155,8 +156,10 @@ public class Game {
                     encounterHappens(comm[1]);
                     break;
                 }
+                case "damage": {
+                    hurt += Integer.parseInt(comm[1]);
+                }
             }
-
         }
         System.out.println("auto");
         encounter.setHasHappened(true);
