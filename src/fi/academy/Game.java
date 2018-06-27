@@ -9,7 +9,7 @@ public class Game {
     static int points = 0;
     static String lastItemUsed = " ";
     static List<Area> areaList = new ArrayList<>();
-    static HashMap<String, Boolean> conditions = new HashMap<>();
+//    static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
     static List<String> inventory = new ArrayList<>();
     static List<String> flaglist = new ArrayList<>();
@@ -89,13 +89,15 @@ public class Game {
     }
 
     static boolean encounterCheck(String encounterName) {
-        System.out.println(encounterName);
         Encounter encounter = encounters.get(encounterName);
         if (!encounterName.equals(".")) {
             for (int i = 0; i < encounter.getConditions().size(); i++) {
                 String checkCond = encounter.getConditions().get(i);
                 System.out.println(checkCond);
-                if (conditions.get(checkCond) && (encounter.getHasHappened() == false)) {
+                if(checkCond.equals(".") && (encounter.getHasHappened() == false)) {
+                    return true;
+                }
+                if ((flaglist.contains(checkCond)) && (encounter.getHasHappened() == false)) {
                     return true;
                 }
             }
@@ -140,7 +142,7 @@ public class Game {
                     break;
                 }
                 case "clear": {
-                    flaglist.add(comm[1]);
+                    flaglist.remove(comm[1]);
                     break;
                 }
                 case "call": {
@@ -150,6 +152,7 @@ public class Game {
             }
 
         }
+        System.out.println("auto");
         encounter.setHasHappened(true);
         return encounter.getDescription();
     }

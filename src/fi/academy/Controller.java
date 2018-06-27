@@ -40,8 +40,6 @@ public class Controller {
             lastItemUsed = " ";
         }
         Area thisArea = areaList.get(currentArea);
-        conditions.put("GruisAlive", true);
-        conditions.put("GruisAngry", true);
         if(!thisArea.getEncountersinRoom().contains(".")) {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
