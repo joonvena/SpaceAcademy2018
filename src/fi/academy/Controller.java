@@ -98,6 +98,8 @@ public class Controller {
     public void updateGUI() {
         // Update all GUI elements according to current game state!
         inventory.getChildren().clear();
+        System.out.println("This is test");
+        System.out.println(Game.inventory);
         for (String item : Game.inventory) {
             inventory.getChildren().addAll(new Text(item+"\n"));
         }

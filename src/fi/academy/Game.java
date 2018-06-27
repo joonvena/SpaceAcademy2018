@@ -22,64 +22,76 @@ public class Game {
     }
 
     public static void commandParser(String input) {
-        try {
-            String[] command = input.split(" ", 2);
-            switch (command[0]) {
-                case "goto": {
-                    int nextArea = fetchAreaID(command[1]);
-                    if (nextArea != -1 && areaList.get(currentArea).getBorderingAreas().contains(nextArea)) {
-                        currentArea = nextArea;
-                    } else {
-                        System.out.println("Can't go there!");
-                    }
-                    break;
+
+        String[] command = input.split(" ", 2);
+        switch (command[0]) {
+            case "goto": {
+                int nextArea = fetchAreaID(command[1]);
+                if (nextArea != -1 && areaList.get(currentArea).getBorderingAreas().contains(nextArea)) {
+                    currentArea = nextArea;
+                } else {
+                    System.out.println("Can't go there!");
                 }
-                case "take": {
+                break;
+            }
+
+            case "take": {
+                if (encounters.get(command[1]) != null) {
                     Encounter encounter = encounters.get(command[1]);
-                    if(!encounter.getEvents().contains("heavy")) {
+                    if (!encounter.getEvents().contains("heavy")) {
                         getItem(command[1]);
                     } else {
                         lastItemUsed = "tooHeavy";
                     }
                     break;
-                }
-                case "drop": {
-                    loseItem(command[1]);
+                } else {
+                    System.out.println("testi!");
+                    getItem(command[1]);
                     break;
                 }
-                case "use": {
-                    String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
-                    if (command[1].contains("computer") && areaList.get(currentArea).getItemList().contains(computerName)) {
-                        if (command[1].length() > computerName.length()) {
-                            String answer = command[1].substring(command[1].indexOf("computer") + 9);
-                            System.out.println(answer);
-                            Encounter encounter = encounters.get(computerName);
-                            String[] events = encounter.getEvents().split(",");
-                            for (int i = 0; i < events.length; i++) {
-                                if (events[i].equals("answer " + answer)) {
-                                    lastItemUsed = computerName + "OK";
-                                } else {
-                                    lastItemUsed = "accessDenied";
+            }
+
+            case "drop": {
+                loseItem(command[1]);
+                break;
+            }
+
+            case "use": {
+                if (command[1].contains("computer")) {
+                    if (command[1].contains("computer")) {
+                        String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
+                        if (areaList.get(currentArea).getItemList().contains(computerName)) {
+                            if (command[1].length() > computerName.length()) {
+                                String answer = command[1].substring(command[1].indexOf("computer") + 9);
+                                System.out.println("answer!");
+                                Encounter encounter = encounters.get(computerName);
+                                String[] events = encounter.getEvents().split(",");
+                                for (int i = 0; i < events.length; i++) {
+                                    if (events[i].equals("answer " + answer)) {
+                                        lastItemUsed = computerName + "OK";
+                                    } else {
+                                        lastItemUsed = "accessDenied";
+                                    }
                                 }
+                            } else {
+                                lastItemUsed = computerName;
                             }
-                        } else {
-                            lastItemUsed = computerName;
                         }
                     }
-                    if (inventory.contains(command[1]) && (encounters.get(command[1]) != null)) {
+                } else if (inventory.contains(command[1]) && (encounters.get(command[1]) != null)) {
+                        System.out.println("Testi");
                         lastItemUsed = command[1];
                         System.out.println("Something happens");
                     } else {
                         System.out.println("You don't have such an item!");
+                        break;
                     }
                     break;
                 }
+
             }
         }
-        catch (Exception e) {
-            errorMessage = true;
-        }
-    }
+
 
     public static void getItem (String input) {
         List itemsInRoom = areaList.get(currentArea).getItemList();
@@ -88,6 +100,7 @@ public class Game {
             System.out.println("Is here!");
             itemsInRoom.remove(input);
             inventory.add(input);
+            System.out.println(inventory);
         } else {
             System.out.println(input+" is not in this area!");
         }

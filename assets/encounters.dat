@@ -35,9 +35,9 @@ It's a green-and-gray polymer jumpsuit that kept you nice and comfy while you to
 GruisAlive
 gain 1
 manual
-"Space Academy - become an astronaut in 12 weeks! All you need to know is that "goto bio lab" moves you, and you can also "take", "drop", and "use" items you find! Very easy, isn't it? What could possibly go wrong?"
-GruisAlive
-gain 3
+Space Academy - 12 weeks! 
+.
+.
 fumble
 You fumble around while babbling incomprehensibly. You lose time, which is the only thing worth a damn in this life. Maybe next time you'll think about what you will use or take or where will you go to?
 .
@@ -45,7 +45,7 @@ You fumble around while babbling incomprehensibly. You lose time, which is the o
 lab computer
 The computer buzzes and prints: "What is the first line written if learning a new technology"
 .
-answer hello world
+heavy,answer hello world
 lab computerOK
 The computer opens!
 .
@@ -57,8 +57,12 @@ The computer says "Access denied"
 heavy rock
 .
 .
-heavy, set jotain
+heavy,set jotain
 tooHeavy
 The item you are trying to pick up is too heavy!
+.
+.
+microscope
+what up
 .
 .

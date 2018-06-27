@@ -1,7 +1,7 @@
 Cryogenics
 Cryogenic pods line the walls of this round room. One of the pods is open.
 1 2
-pod,frozen creature,manual,grenade,grenade,grenade,pistol,clip,clip
+pod,frozen creature,manual,grenade,grenade,grenade,pistol,clip,clip,lab computer
 startGame
 Bio Lab
 This laboratory is equipped with advanced biomedical equipment.
