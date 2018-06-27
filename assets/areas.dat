@@ -1,90 +1,110 @@
 Cryogenics
 Cryogenic pods line the walls of this round room. One of the pods is open.
 1 2
-pod,frozen creature
-Gru
+pod,frozen creature,manual
+startGame
 Bio Lab
-Medical equipment...
+This laboratory is equipped with advanced biomedical equipment.
 0 3
-Medi-kit
-
-???
-Smells like one too.
+samples,microscope,chemicals,doctor's log #3
+.
+Hydroponics
+This laboratory contains many rows of plastic containers with mineral nutrient solutions in a water solvent. Plants of many different kinds grow in the containers, filling the room with a rich array of scents.
 0 3
-shoe,dead man
-Gru
+apples,carrots,lettuce,onions,oranges,radishes
+.
 Med Bay
-Smells antiseptic.
+An antiseptic smell billows forth from many medical containers strewn about the floor and tables in this room.
 1 2 4
-dumbbell
-Gru
+scalpel,dead man,needle,medical scanner
+steamSeen
 Access Hub
 This ring-shaped access module connects the four wings of the Space Academy station: the Science Wing, Living Quarters, Engineering, and Astrogation. Blood spatters stain the floor, walls, and ceiling of this area.
 3 5 9 13
-severed leg,eyeball
-Gru
+severed leg,eyeball,bloody glove,blood
+.
 Rec Room
-Room full of entertainment: pool table, space invaders arcade game, etc. Also a nice kitchen.
+This recreation room is complete with a bar and kitchen. Many kinds of entertainment are available here.
 4 6 7
-emptiness,chillystuff
-Gru
-Hydroponics
-This plant growth laboratory .. Bushes, lovely bushes.
+bottle of whiskey,space invaders arcade game,comic book,herring,pool table
+.
+Restrooms
+There are toilets, showers, and other facilities in this area.
 5 8
-apple,cucumber,lettuce,tomato
-Gru
+showers,toilets,scribbled note,doctor's log #2
+.
 Gym
-Bike, rowing, etc. The reek of sweat hangs heavy in the air.
+This gym is equipped with all manner of modern exercise equipment. The reek of sweat hangs heavy in the air.
 5 8
-radio
-Gru
+treadmill,kettlebell,foam roller,bench press,rowing machine,exercise bike,bloody towel
+.
 Crew Quarters
-Oh my god so many machines.
+All crew members live in this area. The crew quarters are pretty comfortable for their size.
 6 7
-wrench
-Gru
-CPU Lab???
-Power, data, cooling, gases.. combustion.. freezer/life science.. fluid physics.. biomechanical.. small biology experiments)
+beds,doctor's log #1,dead scientist
+.
+FIXRobotics
+This area is intended for the storage and maintenance of different kinds of robots.
 4 10 11
 wire
-Gru
-Server Room
+.
+FIXServer Room
 The solar panels make the station go round round round. (Not literally, that's the gravity.)
 9 12
 wire
-Gru
-Reactor
+.
+FIXReactor
 Oxygen-generating machinery. Cseeeeeh-puff. Cheeeeeh-puff.
 9 12
 oxygen candle
-Gru
-Engine Room
+.
+FIXEngine Room
 Smell of machine oil. Beds, stuff, whatever.
 10 11
 oil can,wrench
-Gru
-Comms
+.
+FIXComms
 All kinds of radios and stuff that beeps. BEEP!
 4 14 15
 juicy berries
-Gru
-Astrogation??
+.
+FIXAstrogation
 A shuttle is docked to the airlock.
 13 16
-Screwdriver
-Gru
-???
+screwdriver
+.
+FIXStorage
 The way to GTFO here!
 13 16
-Engage Switch
-Gru
-Airlock
+lots of stuff
+.
+FIXAirlock
 The way to GTFO here!
 14 15 17
-Engage Switch
-Gru
+locked door
+.
 Escape Pod
-The way to GTFO here!
+This small shuttle can take you away from the scape station.
 16
-Engage Switch
-Gru
+launch button
+.
+WinWin
+You saved yourself and everyone else!
+18
+.
+.
+WinLose
+You saved yourself, but the genetic r unhuman entity reaches Earth with the space station. It kills everyone on the planet!
+19
+.
+.
+LoseWin
+You died, but at least Earth was saved!
+20
+.
+.
+LoseLose
+You died!
+21
+.
+.

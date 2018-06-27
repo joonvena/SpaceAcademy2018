@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -32,7 +33,10 @@ public class Controller {
         String input = commandInput.getText();
         commandParser(input);
         if (!lastItemUsed.equals(" ")) {
-            output.getChildren().addAll(new Text(Game.encounterHappens(lastItemUsed)));
+            Text t = new Text(Game.encounterHappens(lastItemUsed));
+            t.setFill(Color.BLUE);
+            t.setStyle("-fx-font-style: italic");
+            output.getChildren().addAll(t);
             lastItemUsed = " ";
         }
         Area thisArea = areaList.get(currentArea);
@@ -42,6 +46,8 @@ public class Controller {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
                     Text text5 = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
+                    text5.setFill(Color.BLUE);
+                    text5.setStyle("-fx-font-style: italic");
                     output.getChildren().addAll(new Text(input + "\n\n"), text5);
                 }
                 ;
