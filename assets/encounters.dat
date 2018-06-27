@@ -5,7 +5,11 @@ get jumpsuit
 steamSeen
 Hot steam is leaking into the access corridor ahead. Looks dangerous, I'd better not go there until I've fixed the problem!
 .
-get jumpsuit,set GruisAlive
+.
+huntBegins
+Suddenly, the loudspeakers on the walls sound a blaring alarm! BLEEP! BLEEP! BLEEP! The sound of hydraulics hissing somewhere within the walls is deafening. Simultaneously, something large and sinister stirs somewhere near and lets out a loud, high-pitched screech. Whatever it was, it didn't sound friendly. The hunt is on!
+.
+set shitHitTheFan,damage 4
 OxygenisGone
 Oxygen disappears
 NoOxygen
@@ -13,7 +17,11 @@ end game
 grenade
 The grenade goes BOOM! You sure did cause some damage!
 .
-lose grenade,damage 6,set GruisAlive
+damage 6,lose grenade,set monsterIsAngry
+pistol
+BANG! BANG! You make bullet holes in everything near you! You feel really manly now!
+clip
+damage 4,lose clip
 motion scanner
 The scanner goes BEEP!
 GruisAlive

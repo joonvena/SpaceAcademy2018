@@ -1,7 +1,7 @@
 Cryogenics
 Cryogenic pods line the walls of this round room. One of the pods is open.
 1 2
-pod,frozen creature,manual,lab computer,heavy rock
+pod,frozen creature,manual,grenade,grenade,grenade,pistol,clip,clip
 startGame
 Bio Lab
 This laboratory is equipped with advanced biomedical equipment.
@@ -22,7 +22,7 @@ Access Hub
 This ring-shaped access module connects the four wings of the Space Academy station: the Science Wing, Living Quarters, Engineering, and Astrogation. Blood spatters stain the floor, walls, and ceiling of this area.
 3 5 9 13
 severed leg,eyeball,bloody glove,blood
-.
+huntBegins
 Rec Room
 This recreation room is complete with a bar and kitchen. Many kinds of entertainment are available here.
 4 6 7

@@ -43,7 +43,12 @@ public class Controller {
 
         // If G.R.U.E. has been awakened, decrease the timer
         if (flaglist.contains("shitHitTheFan")) {
-            System.out.println("Shit has hit the fan!");
+            hurt--;
+            System.out.println(hurt);
+            if (hurt<=0) {
+                hurt = 0;
+                System.out.println("The monster appears!");
+            }
             // decrease timer THEN if 0, monster appears!
         }
 
