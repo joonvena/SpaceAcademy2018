@@ -26,7 +26,7 @@ public class Game {
             switch (command[0]) {
                 case "goto": {
                     int nextArea = fetchAreaID(command[1]);
-                    if (nextArea != -1) {
+                    if (nextArea != -1 && areaList.get(currentArea).getBorderingAreas().contains(nextArea)) {
                         currentArea = nextArea;
                     } else {
                         System.out.println("Can't go there!");
@@ -48,12 +48,13 @@ public class Game {
                             String answer = command[1].substring(command[1].indexOf("computer") + 9);
                             System.out.println(answer);
                             Encounter encounter = encounters.get(computerName);
-                            for (int i = 0; i < encounter.get; i++) {
-                            if (encounter.getEvents().get(i).equals("answer " + answer)) {
-                                lastItemUsed = computerName + "OK";
-                            }
-                            } else {
-                                lastItemUsed = "accessDenied";
+                            String[] events = encounter.getEvents().split(",");
+                            for (int i = 0; i < events.length; i++) {
+                                if (events[i].equals("answer " + answer)) {
+                                    lastItemUsed = computerName + "OK";
+                                } else {
+                                    lastItemUsed = "accessDenied";
+                                }
                             }
                         } else {
                             lastItemUsed = computerName;
