@@ -1,14 +1,10 @@
-Gru
-Gru appears
-GruisAlive
-get apple,set EventTest
 startGame
 It's cold... I'm shivering and my limbs feel stiff as I crawl out of a cryogenic pod. How long have I been here? What has happened here?
-GruisAlive
+.
 get jumpsuit
 steamSeen
 Hot steam is leaking into the access corridor ahead. Looks dangerous, I'd better not go there until I've fixed the problem!
-GruisAlive
+.
 get jumpsuit,set GruisAlive
 OxygenisGone
 Oxygen disappears
@@ -28,7 +24,8 @@ GruisAlive
 get muscles
 jumpsuit
 It's a green-and-gray polymer jumpsuit that kept you nice and comfy while you took a cryogenic nap. Type "drop jumpsuit" if you want to be naked! (Come on, don't be weird!)
-
+GruisAlive
+gain 1
 manual
 "Space Academy - become an astronaut in 12 weeks! All you need to know is that "goto bio lab" moves you, and you can also "take", "drop", and "use" items you find! Very easy, isn't it? What could possibly go wrong?"
 GruisAlive
