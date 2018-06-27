@@ -31,6 +31,10 @@ public class Controller {
         output.getChildren().clear();
         String input = commandInput.getText();
         commandParser(input);
+        if (!lastItemUsed.equals(" ")) {
+            output.getChildren().addAll(new Text(Game.encounterHappens(lastItemUsed)));
+            lastItemUsed = " ";
+        }
         Area thisArea = areaList.get(currentArea);
         conditions.put("GruisAlive", true);
         conditions.put("GruisAngry", true);

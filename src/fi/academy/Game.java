@@ -7,6 +7,7 @@ import java.util.*;
 public class Game {
     static int currentArea = 0;
     static int points = 0;
+    static String lastItemUsed = " ";
     static List<Area> areaList = new ArrayList<>();
     static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
@@ -35,6 +36,16 @@ public class Game {
             }
             case "drop": {
                 loseItem(command[1]);
+                break;
+            }
+            case "use": {
+                if(inventory.contains(command[1]) && (encounters.get(command[1])!=null)) {
+                    lastItemUsed = command[1];
+                    System.out.println("Something happens");
+                }
+                else {
+                    System.out.println("You don't have such an item!");
+                }
                 break;
             }
         }
