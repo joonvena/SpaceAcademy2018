@@ -10,7 +10,7 @@ public class Game {
     static List<Area> areaList = new ArrayList<>();
     static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
-    static List<String> inventory = new ArrayList<>(); 
+    static List<String> inventory = new ArrayList<>();
 
     public void start() {
         fileReader();
@@ -63,7 +63,6 @@ public class Game {
             System.out.println(input+" is not in your pocket!");
         }
     }
-
 
     public static int fetchAreaID(String input) {
         for (int i = 0; i < areaList.size(); i++) {

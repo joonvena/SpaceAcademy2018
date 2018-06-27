@@ -1,15 +1,90 @@
-Cryo Chamber
+Cryogenics
 It's a place filled with weird pods. You came out from one of them.
-0 1
+1 2
 test,stuff,broom
 Gru
-Locker room
+Bio Lab
+Medical equipment...
+0 3
+Medi-kit
+Gru
+???
 Smells like one too.
-0 1 2
+0 3
 shoe,dead man
 Gru
-Empty hallway
-It's empty. It's long. It's an empty hallway.
-1 
+Med Bay
+Smells antiseptic.
+1 2 4
+dumbbell
+Gru
+Access Hub
+This ring-shaped access module connects the four wings of the Space Academy station: the Science Wing, Living Quarters, Engineering, and Astrogation. Blood spatters stain the floor, walls, and ceiling of this area.
+3 5 9 13
+severed leg,eyeball
+Gru
+Rec Room
+Room full of entertainment: pool table, space invaders arcade game, etc. Also a nice kitchen.
+4 6 7
 emptiness,chillystuff
+Gru
+Hydroponics
+This plant growth laboratory .. Bushes, lovely bushes.
+5 8
+apple,cucumber,lettuce,tomato
+Gru
+Gym
+Bike, rowing, etc. The reek of sweat hangs heavy in the air.
+5 8
+radio
+Gru
+Crew Quarters
+Oh my god so many machines.
+6 7
+wrench
+Gru
+CPU Lab???
+Power, data, cooling, gases.. combustion.. freezer/life science.. fluid physics.. biomechanical.. small biology experiments)
+4 10 11
+wire
+Gru
+Server Room
+The solar panels make the station go round round round. (Not literally, that's the gravity.)
+9 12
+wire
+Gru
+Reactor
+Oxygen-generating machinery. Cseeeeeh-puff. Cheeeeeh-puff.
+9 12
+oxygen candle
+Gru
+Engine Room
+Smell of machine oil. Beds, stuff, whatever.
+10 11
+oil can,wrench
+Gru
+Comms
+All kinds of radios and stuff that beeps. BEEP!
+4 14 15
+juicy berries
+Gru
+Astrogation??
+A shuttle is docked to the airlock.
+13 16
+Screwdriver
+Gru
+???
+The way to GTFO here!
+13 16
+Engage Switch
+Gru
+Airlock
+The way to GTFO here!
+14 15 17
+Engage Switch
+Gru
+Escape Pod
+The way to GTFO here!
+16
+Engage Switch
 Gru

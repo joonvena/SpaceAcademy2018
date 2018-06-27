@@ -28,6 +28,7 @@ public class Controller {
 
     @FXML
     protected void parseCommand(ActionEvent event) {
+        output.getChildren().clear();
         String input = commandInput.getText();
         commandParser(input);
         Area thisArea = areaList.get(currentArea);
@@ -42,7 +43,7 @@ public class Controller {
         String borderAreas = "";
         String allItems = "";
         for (int i = 0; i < thisArea.getBorderingAreas().size(); i++) {
-            borderAreas += "  " + fetchAreaName(i);
+            borderAreas += "  " + fetchAreaName(thisArea.getBorderingAreas().get(i));
         }
 
         for (int i = 0; i < thisArea.getItemList().size(); i++) {
@@ -57,7 +58,7 @@ public class Controller {
         output.getChildren().addAll(new Text(input+"\n\n"), text1, text2, text3, text4);
 
         System.out.println(commandInput.getText());
-
+        commandInput.clear();
         updateGUI();
     }
 

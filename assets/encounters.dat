@@ -1,6 +1,20 @@
 Gru
 Gru appears
 GruisAlive,GruisAngry
+get apple
 OxygenisGone
 Oxygen disappears
 NoOxygen
+end game
+grenade
+The grenade goes BOOM! You sure did cause some damage!
+GruisAlive
+lose grenade,damage 6
+motion scanner
+The scanner goes BEEP!
+GruisAlive
+get sword
+dumbbell
+Wow you feel strong! Well, not really. Your muscles are atrophied. Space does that.
+GruisAlive
+get muscles

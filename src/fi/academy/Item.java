@@ -24,9 +24,6 @@ public class Item {
         return itemDescription;
     }
 
-
-
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Item{");
