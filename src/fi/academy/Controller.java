@@ -48,7 +48,6 @@ public class Controller {
             text.setStyle("-fx-font-style: italic");
             output.getChildren().addAll(text, new Text ("\n\n"));
         }
-
         Area thisArea = areaList.get(currentArea);
         itemEvent();
         monsterEvent();
@@ -57,7 +56,6 @@ public class Controller {
         commandInput.clear();
         updateGUI();
     }
-
     public void itemEvent () {
         // If previous command triggered an item event, activate the event
         if (!lastItemUsed.equals(" ")) {
@@ -88,7 +86,7 @@ public class Controller {
                 case 3: text = new Text (encounterHappens("monsterFar")+"\n\n");
                     break;
             }
-            if (hurt <= 3) {
+            if (hurt <= 3 && hurt > -2) {
                 text.setStyle("-fx-font-style: italic");
                 text.setFill(Color.WHITE);
                 output.getChildren().addAll(text);

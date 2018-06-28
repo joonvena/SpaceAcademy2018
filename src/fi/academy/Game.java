@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Game {
-    static int currentArea = 0;
+    public static int currentArea = 0;
     static int points = 0;
     static int hurt = 0; // Indicates how many rounds the monster waits until its next attack!
     static String lastItemUsed = " ";
@@ -78,7 +78,6 @@ public class Game {
 
     public static void getItem(String input) {
         List itemsInRoom = areaList.get(currentArea).getItemList();
-        System.out.println(itemsInRoom);
         if (itemsInRoom.contains(input)) {
             System.out.println("Is here!");
             itemsInRoom.remove(input);
@@ -115,7 +114,6 @@ public class Game {
         if (areaList.get(currentArea).getItemList().contains(computerName)) {
             if (command[1].length() > computerName.length()) {
                 String answer = command[1].substring(command[1].indexOf("computer") + 9);
-                System.out.println("answer!");
                 Encounter encounter = encounters.get(computerName);
                 String[] events = encounter.getEvents().split(",");
                 for (int i = 0; i < events.length; i++) {
