@@ -41,42 +41,42 @@ treadmill,kettlebell,foam roller,bench press,rowing machine,exercise bike,bloody
 Crew Quarters
 All crew members live in this area. The crew quarters are pretty comfortable for their size.
 6 7
-beds,doctor's log #1,dead scientist,face wash,ipod,glasses
+beds,dead scientist,doctor's log #1,face wash,glasses,ipod,socks
 .
 Robotics
-This area is intended for the storage and maintenance of different kinds of robots. The robots seem to have been smashed into pieces. Some of the machines still buzz, whir, and emit sparks.
+This area is intended for the storage and maintenance of different kinds of robots. The robots seem to have been smashed into pieces. Some of the machines still buzz, whir, and emit showers of sparks.
 4 10 11
 cleaner bot,toolkit,robot parts,wire,camera
 .
-FIXServer Room
-The solar panels make the station go round round round. (Not literally, that's the gravity.)
+Server Room
+Long rows of server cabinets form narrow aisles in this room. The air feels cool here, and the hum of the air conditioning system is louder here than in other parts of the space station.
 9 12
 terminal computer,doctor's log #4,wire,oxygen control computer
 .
-FIXReactor
-This module houses the space station's reactor, which provides electricity to the whole station.
+Reactor
+This module houses the space station's reactor, which provides electricity to the whole station. The air is thick with steam, and the reactor spits out sparks and smoke every once in a while.
 9 12
 broken robot,reactor computer,oxygen candle
 notWorking
-FIXEngine Room
-Smell of machine oil. Beds, stuff, whatever.
+Engine Room
+The engine deck houses all propulsion machinery necessary for maintaining the space station's orbit around Earth. The heavy smell of machine oil is evident in the air, and a loud cacophony of thunking, hissing, and grinding echoes through the room.
 10 11
 engines,oil can,wrench,engine room computer
 .
-FIXComms
-All kinds of radios and stuff that beeps. BEEP!
+Comms
+This room is full of communication computers and radio equipment, which emit buzzing and beeping sounds interspersed with static and fragments of messages.
 4 14 15
 radio,motion scanner
 .
-FIXAstrogation
-A shuttle is docked to the airlock.
+Astrogation
+Large screens showing star maps and video feed from outside the station line the walls, and beneath the screens, a long row of control panels is lit up like a Christmas tree.
 13 16
-radar,star map,astrogation computer,controls
+astrogation computer,controls,radar,star map
 .
 Storage
 The long shelves of this room are full of miscellaneous items.
 13 16
-mop,USB drive,oxygen candle
+fresh socks,oxygen candle,mop,USB drive
 .
 Airlock
 The airlock ensures safe passage between the space station and any vessel docked to the station.
@@ -94,7 +94,7 @@ You saved yourself and everyone else!
 .
 .
 WinLose
-You saved yourself, but the genetic r unhuman entity reaches Earth with the space station. It kills everyone on the planet!
+You saved yourself, but the monster survives the collision when the space station crashes to Earth. The monster really likes it on Earth, rapidly reproducing and killing everyone on the planet!
 19
 .
 .
