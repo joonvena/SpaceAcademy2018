@@ -61,12 +61,23 @@ public class Controller {
     public void itemEvent () {
         // If previous command triggered an item event, activate the event
         if (!lastItemUsed.equals(" ")) {
-            Text text = new Text(Game.encounterHappens(lastItemUsed)+"\n\n");
-            if (text.getText().isEmpty()) text.setText("Nothing happens."); // Not sure if this works?!?
+            Text text = null;
+            if (Game.encounterCheck(lastItemUsed)) {
+                text = new Text(Game.encounterHappens(lastItemUsed));
+            } else {
+                text = new Text("Nothing happens. (Either something is missing or this is not the way the item is meant to be used.)\n\n"); // Not sure if this works?!?
+            }
+
+            String reaction = "";
+            if (lastHurt==1) reaction = " The monster flinched but doesn't go away.";
+            if (lastHurt>1 && lastHurt <5) reaction = " You hurt the monster, and it escaped to the ventilation system, at least for a while.";
+            if (lastHurt>=5) reaction = " You dealt some serious damage to the monster! It scurries off through the ventilation system.";
+
             text.setStyle("-fx-font-style: italic");
             text.setFill(Color.WHITE);
-            output.getChildren().addAll(text);
+            output.getChildren().addAll(text, new Text(reaction),new Text("\n\n"));
             lastItemUsed = " ";
+            lastHurt = 0;
         }
     }
 

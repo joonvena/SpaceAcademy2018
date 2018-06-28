@@ -11,19 +11,39 @@ You notice that the hot steam stopped leaking into the access hub. You must have
 steamOff
 .
 steamDeath
-I noticed the deadly steam pouring out from the ventilation system, but I totally ignored it. ARGH!
+You noticed the deadly steam pouring out from the ventilation system, but you totally ignored it. ARGH!
 .
 move LoseLose
 huntBegins
 Suddenly, the loudspeakers on the walls sound a blaring alarm! BLEEP! BLEEP! BLEEP! The sound of hydraulics hissing somewhere within the walls is deafening. Simultaneously, something large and sinister stirs somewhere near and lets out a loud, high-pitched screech. Whatever it was, it didn't sound friendly. The hunt is on!
 .
-set shitHitTheFan,damage 10
+set shitHitTheFan,damage 6
 notWorking
-It's oddly cold here in the reactor room... The reactor is offline! I wonder if there's a way to restart it...
+It's oddly cold here in the reactor room... The reactor is offline! I wonder if there's a way to restart it... (You probably need some wire as well as some tools. Once you have them in your inventory, type "use reactor".)
+.
+.
+flamerFound
+As you enter the room, you notice a flamer prototype on a table. Looks like it's missing a component that injects the fuel. And of course, you're going to need a lot of fuel!
+.
+.
+airlockLocked
+As you enter the room, you notice red lights blinking on the airlock computer. The screen reads: "Before you attempt to use the airlock computer, please insert the keycard (use keycard)."
 .
 .
 ========== ITEM EVENTS ==========
 .
+.
+.
+acid jar
+You toss the contents of the jar, and everything it touches starts dissolving. You can hear a hissing sound, much like opening a bottle of Coke. The smell of it, though, is more like vomit.
+.
+damage 4,lose acid jar
+apple
+CHEW CHEW GULP! Ahh, so delicious! They say the Space Academy is famous for its fruit, and this apple was no exception!
+.
+gain 1,lose apple
+beds
+You try to take a nap, but all the excitement and terror keeps you awake.
 .
 .
 bench press
@@ -34,6 +54,10 @@ blood sample
 The blood sample is really quite extraordinary. The blood cells in the sample are rapidly regenerating. This sample is not from a human!
 1
 gain 10,lose blood sample
+carrot
+Yum! The delicious taste of the carrot really makes you wonder what the scientists put in the nutrient solution...
+.
+gain 1,lose carrot
 clip
 You can't use a pistol clip like that. Try "use pistol" while you have a clip in your inventory.
 .
@@ -42,6 +66,14 @@ comic book
 Well this sounds interesting... "Tommy Steelneck's adventures on Mars"
 .
 .
+dead nurse
+You notice deep gashes across the dead nurse's chest. The head is also missing. You deduce the the nurse died of these injuries.
+.
+heavy
+dead scientist
+This scientist is missing an arm and a leg. Something powerful must have torn them off.
+.
+heavy
 doctor's log #1
 "There's something moving in the ventilation system. It sounds like an animal, but I have a bad feeling about this. It seems to be capable of anticipating our actions... as though it were... intelligent."
 .
@@ -55,23 +87,47 @@ doctor's log #3
 .
 .
 doctor's log #4
-"I've collected more samples and data about the creature. It is extremely dangerous. If it were to reach the surface of Earth, our human race - indeed all life as we know it - would soon become extinct."
+"I've collected more samples and data about the creature. I've named it the "gene-regenerating unhuman entity", and it is extremely dangerous. If it were to reach the surface of Earth, our human race - indeed all life as we know it - would soon become extinct."
+.
+.
+exercise bike
+You pedal the bike for a while and feel exhausted.
 .
 .
 eyeball
 A retina scanner identifies the owner of the eyeball as Doctor Sawyer. The computer sounds almost happy: BEEP-BOOP! You gain access to some secret stuff on the computer.
 1
 call lab computerOK
+face wash
+The face wash makes you feel rejuvenated!
+.
+gain 3,lose face wash
 flamer
 The flamer spouts a spray of burning gasoline! WOOF! Unfortunately, the fire consumes a lot of oxygen!
 fuel
 damage 8,lose fuel
+functional reactor
+You fixed the reactor. High five!
+.
+.
+flamer prototype
+You use the screwdriver to fix the flamer's injection system using the hose and needle! You now have a functional flamethrower!
+needle,hose,screwdriver
+lose needle,lose hose,lose flamer prototype,get flamer
+foam roller
+THUD! The foam roller probably makes a terrible weapon.
+.
+.
 fresh socks
 These unused socks have a nice feel to them, and what's best, no one else has used them!
 .
 .
 fuel
 You can probably find a use for fuel if you find a suitable item with which to use it...
+.
+.
+glasses
+Wow, you can see everything so clearly now!
 .
 .
 grenade
@@ -82,6 +138,26 @@ herring
 This herring is not really a fish. Get it? It's a red herring! POOF! It vanishes!
 .
 lose herring
+ipod
+You're listening to someone's "The Most Awesomest Space Mix Ever". It has some Babylon Zoo, David Bowie, and Michael Jackson on it. No one will blame you for listening to it since everyone seems to be dead.
+.
+.
+kettlebell
+You swing the heavy kettlebell! Somehow, miraculously, you manage to break it in the process!
+.
+damage 3,lose kettlebell
+launch button
+You push the big red button in the shuttle's control panel. SWOOSH! The shuttle detaches itself from the station's airlock, and shortly after, the shuttle starts its voyage back to Earth!
+.
+.
+lettuce
+So fresh! So refreshing! The taste of the lettuce reminds you of how great things were back on Earth. Why did you ever leave?
+.
+gain 1,lose lettuce
+locked door
+The airlock door is firmly shut. You probably need a keycard to activate the computer and then insert a password, but who knows where you can find the password...
+.
+.
 pistol
 BANG! BANG! Ha, I made bullet holes in everything near me! I feel really tough now!
 clip
@@ -94,10 +170,34 @@ manual
 "Space Academy - become an astronaut in 12 weeks! It's easy; just use the commands (goto, take, drop, use) you've been taught. What could possibly go wrong?"
 .
 .
+medical scanner
+You scan yourself with the scanner. Everything looks fine. Your heart rate is a bit high, though.
+.
+.
 microscope
 You can examine blood and tissue samples with the microscope. Bring your samples here and type "use blood sample", for example.
 .
 .
+mop
+You swing the mop like it's a weapon and break it!
+.
+damage 2,lose mop
+needle
+This might be useful if you need to inject fluids... maybe you can build something out of the needle if you find a workbench?
+.
+.
+onion
+Ahh, I'm not crying, I'm not crying... it's just the onion. So great.
+.
+gain 1,lose onion
+orange
+Ahh, so juicy! Reminds you of your vacation in Málaga back in 2058, except there's no hangover. "Hasta la vida loca, loca, loca, loca..."
+.
+gain 1,lose orange
+oxygen candle
+The oxygen candle releases a lot of oxygen, making the air inside the station a little bit better to breathe.
+.
+gain 3,lose oxygen candle
 pod
 What, you want to crawl back into the pod? No way!
 .
@@ -106,28 +206,96 @@ pool stick
 This sturdy-looking stick isn't quite as sturdy as it looks. SWING! It breaks!
 .
 damage 1,lose pool stick
+pool table
+You shoot a few balls. You're good at this! Then the stick breaks.
+pool stick
+gain 5
+radar
+The radar indicates that there's something off with the space station's orbit.
+.
+.
+radio
+You push some buttons on the radio and receive a message: "Hello? Hello? Is anyone there? Have you contained the situation? For some reason, you can't broadcast messages."
+.
+.
+radish
+You just ate a radish, which tasted like a radish.
+.
+gain 1,lose radish
+reactor
+Using a piece of wire, a screwdriver, and a wrench, you fix the reactor! You still need to start it up, somehow.
+screwdriver,wire,wrench
+lose wire,disable reactor,insert functional reactor
+rowing machine
+Row, row, row your boat, gently down the stream... Ahh, exercise!
+.
+heavy
 scalpel
 You swing and stab wildly with the incredibly sharp scalpel until it breaks!
 .
 damage 2,lose scalpel
+screwdriver
+You can probably use this item to fix something.
+.
+.
+scribbled note
+This note, written on a piece of toilet paper, reads: "We're all going to die".
+.
+.
 severed leg
 You flail the leg around until you realize it's not very good for any purpose when detached from the body it belonged to.
 .
 .
+showers
+You take a quick shower. Ahh, so nice!
+.
+heavy
 socks
 Your feet aren't cold anymore! So nice! If only they weren't someone else's socks. When you think about it... eww.
 .
 .
+space invaders
+Space Invaders is such a classic, always a joy to play! PEW! PEW! PEW! High score! This is great!
+.
+heavy
+screens
+The screens offer a magnificent view of Earth, the Moon, and other celestial bodies. Earth looks strangely big today.
+.
+.
+suspicious pod
+There's something off about this cryogenic pod. It's shaking uncontrollably, and you can hear a faint growling sound coming from inside it. You can't open it, and you're not sure if that would be a good idea, either.
+.
+heavy
+toilets
+You use one of the toilets and find a length of hose stashed inside it! Treasure!
+.
+get hose,disable toilets
+treadmill
+Ain't nothing like a nice jog on a treadmill!
+.
+heavy
 whiskey
 This brown liquor tastes funny. WHEE!
 .
-lose whiskey
+gain 3,lose whiskey
 ========== COMPUTER EVENTS ==========
 .
 .
 .
+airlock computer
+The computer outputs the following: "Please enter Captain Smith's password (use airlock computer [password])."
+.
+.
+airlock computerOK
+You open the airlock! You can enter the airlock by typing "use door".
+.
+insert door,disable airlock computer
+engine room computer
+The computer outputs the following: "Please enter password."
+.
+.
 lab computer
-The computer buzzes and prints: "What is the first line written if learning a new technology?"
+Buzzing furiously, the computer outputs: "What should your very first program output when you start learning a new programming language? (Hint: Don't use punctuation.)"
 .
 heavy,answer hello world
 lab computerOK
@@ -135,7 +303,7 @@ You successfully hack the computer! Damn you're good! The ventilation system goe
 .
 clear steamOn,set steamOff,disable lab computer,sound correctSound.mp3
 accessDenied
-The computer says "Access denied"
+The computer outputs: "ACCESS DENIED!"
 .
 .
 ========== META EVENTS ==========
