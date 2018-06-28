@@ -1,7 +1,81 @@
 .boxLabel {
     -fx-background-color: gray;
+    -fx-border-radius: 5px;
+}
+
+.mainWindow {
+    -fx-background-image: url("background.png");
+    -fx-background-repeat: stretch;
+    fx-text-fill: #FFF;
+    -fx-background-color: #1b202b;
+}
+
+.main {
+    -fx-background-color: black;
+    -fx-background-repeat: stretch;
+}
+
+.mapp {
+    -fx-background-image: url("map.png");
+}
+
+.mainContent {
+    -fx-fill: #FFF;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #1b202b;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.title {
+    -fx-font: 50px Tahoma;
+    -fx-padding: 10px;
+    -fx-text-fill: #39acff;
 }
 
 #topPane {
-    -fx-background-color: blue;
+    -fx-background-color: black;
   }
+
+
+#inventory > Text {
+    -fx-fill: white;
+    -fx-font-size : 18px;
+}
+
+
+.btn {
+    -fx-background-color: #1b202b;
+    -fx-text-fill: #FFF !important;
+}
+
+.commandBar {
+    -fx-background-color: #1b202b;
+    -fx-text-fill: #FFF !important;
+}

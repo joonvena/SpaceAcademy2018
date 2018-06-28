@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-stylesheet styles.css?>
+
+
+<?import javafx.scene.Group?>
+
+
+
+<StackPane alignment="CENTER" style="-fx-background-color: #040d1b" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="804.0" prefWidth="1379.0" styleClass="main" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="fi.academy.Controller">
+  <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="804.0" prefWidth="1379.0" styleClass="mainWindow" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <ImageView id="imgview" fitHeight="443.7476115542163" fitWidth="751.0" layoutX="607.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="/fi/academy/map.png" />
+      </image>
+    </ImageView>
+    <Label layoutX="176.0" layoutY="-20.0" prefHeight="106.0" prefWidth="368.0" text="SPACE ACADEMY" textFill="#dfdfdf">
+      <font>
+        <Font name="System Bold" size="30.0" />
+      </font>
+    </Label>
+    <TextFlow fx:id="inventory" layoutX="607.0" layoutY="518.0" prefHeight="286.0" prefWidth="399.0" />
+    <TextField fx:id="commandInput" styleClass="commandBar" layoutX="24.0" layoutY="733.0" prefHeight="45.0" prefWidth="413.0" />
+    <Button fx:id="action" layoutX="460.0" styleClass="btn" defaultButton="true" layoutY="733.0" mnemonicParsing="false" onAction="#parseCommand" prefHeight="45.0" prefWidth="105.0" text="Button" />
+    <Label layoutX="607.0" layoutY="477.0" prefHeight="45.0" prefWidth="244.0" text="Inventory" textFill="WHITE">
+      <font>
+        <Font name="System Bold" size="20.0" fx:id="x1" />
+      </font>
+    </Label>
+    <ScrollPane fx:id="Scroll" layoutX="24.0" layoutY="67.0" prefHeight="634.0" prefWidth="545.0" visible="true">
+      <content>
+        <TextFlow fx:id="output" prefHeight="396.0" prefWidth="523.0" />
+      </content>
+    </ScrollPane>
+    <ImageView fitHeight="227.25" fitWidth="303.0" layoutX="1040.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@alien.png" />
+      </image>
+    </ImageView>
+    <Label font="$x1" layoutX="788.0" layoutY="477.0" prefHeight="45.0" prefWidth="244.0" text="Oxygen Level" textFill="WHITE" />
+    <ProgressBar layoutX="788.0" layoutY="529.0" prefHeight="29.0" prefWidth="167.0" progress="0.29" />
+  </children>
+  <stylesheets>
+    <URL value="@styles.css" />
+  </stylesheets>
+  </AnchorPane>
+</StackPane>

@@ -1,7 +1,7 @@
 startGame
 It's cold... I'm shivering and my limbs feel stiff as I crawl out of a cryogenic pod. How long have I been here? What has happened here?
 .
-get jumpsuit,set steamOn
+get jumpsuit,set steamOn,sound startSound.mp3
 steamSeen
 Hot steam is leaking into the access corridor ahead. Looks dangerous, I'd better not go there until I've fixed the problem!
 steamOn
@@ -131,7 +131,7 @@ heavy,answer hello world
 lab computerOK
 You successfully hack the computer! Damn you're good! The ventilation system goes quiet. It's eerily quiet in the room now.
 .
-clear steamOn,set steamOff,disable lab computer
+clear steamOn,set steamOff,disable lab computer,sound correctSound.mp3
 accessDenied
 The computer says "Access denied"
 .
