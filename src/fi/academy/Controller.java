@@ -101,7 +101,7 @@ public class Controller {
                 case 3: text = new Text (encounterHappens("monsterFar")+"\n\n");
                     break;
             }
-            if (hurt <= 3) {
+            if (hurt <= 3 && hurt > -2) {
                 text.setStyle("-fx-font-style: italic");
                 text.setFill(Color.WHITE);
                 output.getChildren().addAll(text);
