@@ -35,13 +35,13 @@ public class Controller {
     protected void parseCommand(ActionEvent event) {
         output.heightProperty().addListener(observable -> Scroll.setVvalue(1D));
         Scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        /*Scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);*/
-        output.getChildren();
 
         // Get command from text box, parse it
         String input = commandInput.getText();
         commandParser(input);
-        output.getChildren().addAll((new Text("> "+input+"\n\n")));
+        Text iText = new Text("> "+input+"\n\n");
+        iText.setFill(Color.WHITE);
+        output.getChildren().addAll(iText);
         if (errorMessage == true) {
             errorMessage = false;
             Text text = new Text(Game.encounterHappens("fumble"));
@@ -61,9 +61,11 @@ public class Controller {
     public void itemEvent () {
         // If previous command triggered an item event, activate the event
         if (!lastItemUsed.equals(" ")) {
-            Text t = new Text(Game.encounterHappens(lastItemUsed)+"\n\n");
-            t.setStyle("-fx-font-style: italic");
-            output.getChildren().addAll(t);
+            Text text = new Text(Game.encounterHappens(lastItemUsed)+"\n\n");
+            if (text.getText().isEmpty()) text.setText("Nothing happens."); // Not sure if this works?!?
+            text.setStyle("-fx-font-style: italic");
+            text.setFill(Color.WHITE);
+            output.getChildren().addAll(text);
             lastItemUsed = " ";
         }
     }
@@ -86,8 +88,11 @@ public class Controller {
                 case 3: text = new Text (encounterHappens("monsterFar")+"\n\n");
                     break;
             }
-            text.setStyle("-fx-font-style: italic");
-            output.getChildren().addAll(text);
+            if (hurt <= 3) {
+                text.setStyle("-fx-font-style: italic");
+                text.setFill(Color.WHITE);
+                output.getChildren().addAll(text);
+            }
         }
     }
 
@@ -96,9 +101,10 @@ public class Controller {
         if(!thisArea.getEncountersinRoom().contains(".")) {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
-                    Text text5 = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
-                    text5.setStyle("-fx-font-style: italic");
-                    output.getChildren().addAll(text5, new Text ("\n\n"));
+                    Text text = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
+                    text.setStyle("-fx-font-style: italic");
+                    text.setFill(Color.WHITE);
+                    output.getChildren().addAll(text, new Text ("\n\n"));
                 }
             }
         }
@@ -122,8 +128,6 @@ public class Controller {
         Text text2 = new Text(thisArea.getDescription()+"\n");
         Text text3 = new Text("Adjacent areas: "+borderAreas+"\n");
         Text text4 = new Text("Items in room: "+allItems+"\n");
-        output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
-
         text1.setFill(Color.WHITE);
         text1.setStyle("-fx-font-weight: bold; -fx-font-style: italic;");
         text5.setFill(Color.RED);
@@ -133,11 +137,8 @@ public class Controller {
         text4.setFill(Color.WHITE);
         text4.setStyle("-fx-font-weight: bold");
 
-
+        //output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
         output.getChildren().addAll(text1, text5, text2, text3, text4, new Text("\n\n"));
-        errorMessage = false;
-        commandInput.clear();
-        updateGUI();
     }
 
     public void updateGUI() {

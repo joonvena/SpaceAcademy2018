@@ -1,37 +1,37 @@
 Cryogenics
 Cryogenic pods line the walls of this round room. One of the pods is open.
 1 2
-pod,frozen creature,manual,grenade,grenade,grenade,pistol,clip,clip,lab computer
+pod,frozen creature,manual,grenade,pistol,clip,clip
 startGame
 Bio Lab
 This laboratory is equipped with advanced biomedical equipment.
 0 3
-samples,microscope,chemicals,doctor's log #3
+chemicals,lab computer,microscope,doctor's log #3
 .
 Hydroponics
 This laboratory contains many rows of plastic containers with mineral nutrient solutions in a water solvent. Plants of many different kinds grow in the containers, filling the room with a rich array of scents.
 0 3
-apples,carrots,lettuce,onions,oranges,radishes
+apple,carrot,grenade,lettuce,onion,orange,radish
 .
 Med Bay
 An antiseptic smell billows forth from many medical containers strewn about the floor and tables in this room.
 1 2 4
-scalpel,dead man,needle,medical scanner
-steamSeen
+dead man,medical scanner,needle,scalpel
+steamSeen,steamGone
 Access Hub
 This ring-shaped access module connects the four wings of the Space Academy station: the Science Wing, Living Quarters, Engineering, and Astrogation. Blood spatters stain the floor, walls, and ceiling of this area.
 3 5 9 13
-severed leg,eyeball,bloody glove,blood
+blood sample,eyeball,severed leg
 huntBegins
 Rec Room
 This recreation room is complete with a bar and kitchen. Many kinds of entertainment are available here.
 4 6 7
-bottle of whiskey,space invaders arcade game,comic book,herring,pool table
+whiskey,space invaders,comic book,herring,pool table,pool stick
 .
 Restrooms
 There are toilets, showers, and other facilities in this area.
 5 8
-showers,toilets,scribbled note,doctor's log #2
+showers,toilets,scribbled note,doctor's log #2,pistol,clip
 .
 Gym
 This gym is equipped with all manner of modern exercise equipment. The reek of sweat hangs heavy in the air.
@@ -41,12 +41,12 @@ treadmill,kettlebell,foam roller,bench press,rowing machine,exercise bike,bloody
 Crew Quarters
 All crew members live in this area. The crew quarters are pretty comfortable for their size.
 6 7
-beds,doctor's log #1,dead scientist
+beds,doctor's log #1,dead scientist,face wash,ipod,glasses
 .
-FIXRobotics
-This area is intended for the storage and maintenance of different kinds of robots.
+Robotics
+This area is intended for the storage and maintenance of different kinds of robots. The robots seem to have been smashed into pieces. Some of the machines still buzz, whir, and emit sparks.
 4 10 11
-cleaner bot,toolkit,robot parts,wire
+cleaner bot,toolkit,robot parts,wire,camera
 .
 FIXServer Room
 The solar panels make the station go round round round. (Not literally, that's the gravity.)
@@ -54,10 +54,10 @@ The solar panels make the station go round round round. (Not literally, that's t
 terminal computer,doctor's log #4,wire,oxygen control computer
 .
 FIXReactor
-Oxygen-generating machinery. Cseeeeeh-puff. Cheeeeeh-puff.
+This module houses the space station's reactor, which provides electricity to the whole station.
 9 12
 broken robot,reactor computer,oxygen candle
-.
+notWorking
 FIXEngine Room
 Smell of machine oil. Beds, stuff, whatever.
 10 11
@@ -73,13 +73,13 @@ A shuttle is docked to the airlock.
 13 16
 radar,star map,astrogation computer,controls
 .
-FIXStorage
-The way to GTFO here!
+Storage
+The long shelves of this room are full of miscellaneous items.
 13 16
-lots of stuff
+mop,USB drive,oxygen candle
 .
 Airlock
-The airlock ensures safe passage between the space station and any vessel outside the station.
+The airlock ensures safe passage between the space station and any vessel docked to the station.
 14 15 17
 airlock computer,locked door
 .

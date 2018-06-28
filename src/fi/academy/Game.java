@@ -10,7 +10,6 @@ public class Game {
     static int hurt = 0; // Indicates how many rounds the monster waits until its next attack!
     static String lastItemUsed = " ";
     static List<Area> areaList = new ArrayList<>();
-//    static HashMap<String, Boolean> conditions = new HashMap<>();
     static HashMap<String, Encounter> encounters = new HashMap<>();
     static List<String> inventory = new ArrayList<>();
     static List<String> flaglist = new ArrayList<>();
@@ -57,41 +56,38 @@ public class Game {
 
             case "use": {
                 if (command[1].contains("computer")) {
-                    if (command[1].contains("computer")) {
-                        String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
-                        if (areaList.get(currentArea).getItemList().contains(computerName)) {
-                            if (command[1].length() > computerName.length()) {
-                                String answer = command[1].substring(command[1].indexOf("computer") + 9);
-                                System.out.println("answer!");
-                                Encounter encounter = encounters.get(computerName);
-                                String[] events = encounter.getEvents().split(",");
-                                for (int i = 0; i < events.length; i++) {
-                                    if (events[i].equals("answer " + answer)) {
-                                        lastItemUsed = computerName + "OK";
-                                    } else {
-                                        lastItemUsed = "accessDenied";
-                                    }
+                    String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
+                    if (areaList.get(currentArea).getItemList().contains(computerName)) {
+                        if (command[1].length() > computerName.length()) {
+                            String answer = command[1].substring(command[1].indexOf("computer") + 9);
+                            System.out.println("answer!");
+                            Encounter encounter = encounters.get(computerName);
+                            String[] events = encounter.getEvents().split(",");
+                            for (int i = 0; i < events.length; i++) {
+                                if (events[i].equals("answer " + answer)) {
+                                    lastItemUsed = computerName + "OK";
+                                } else {
+                                    lastItemUsed = "accessDenied";
                                 }
-                            } else {
-                                lastItemUsed = computerName;
                             }
+                        } else {
+                            lastItemUsed = computerName;
                         }
                     }
-                } else if (inventory.contains(command[1]) && (encounters.get(command[1]) != null)) {
-                        System.out.println("Testi");
-                        lastItemUsed = command[1];
-                        System.out.println("Something happens");
-                    } else {
-                        System.out.println("You don't have such an item!");
-                        break;
-                    }
+                } else if ((encounters.get(command[1]) != null) && (inventory.contains(command[1]) || (areaList.get(currentArea).getItemList().contains(command[1])))) {
+                    System.out.println("Testi");
+                    lastItemUsed = command[1];
+                    System.out.println("Something happens");
+                } else {
+                    System.out.println("You don't have such an item!");
                     break;
                 }
-
+                break;
             }
         }
+    }
 
-    public static void getItem (String input) {
+    public static void getItem(String input) {
         List itemsInRoom = areaList.get(currentArea).getItemList();
         System.out.println(itemsInRoom);
         if (itemsInRoom.contains(input)) {
@@ -100,11 +96,11 @@ public class Game {
             inventory.add(input);
             System.out.println(inventory);
         } else {
-            System.out.println(input+" is not in this area!");
+            System.out.println(input + " is not in this area!");
         }
     }
 
-    public static void loseItem (String input) {
+    public static void loseItem(String input) {
         List itemsInRoom = areaList.get(currentArea).getItemList();
         System.out.println(itemsInRoom);
         if (inventory.contains(input)) {
@@ -112,7 +108,7 @@ public class Game {
             inventory.remove(input);
             itemsInRoom.add(input);
         } else {
-            System.out.println(input+" is not in your pocket!");
+            System.out.println(input + " is not in your pocket!");
         }
     }
 
@@ -131,25 +127,29 @@ public class Game {
             for (int i = 0; i < encounter.getConditions().size(); i++) {
                 String checkCond = encounter.getConditions().get(i);
                 System.out.println(checkCond);
-                if(checkCond.equals(".") && (encounter.getHasHappened() == false)) {
+                if (checkCond.equals(".") && (encounter.getHasHappened() == false)) {
                     return true;
                 }
                 if ((flaglist.contains(checkCond)) && (encounter.getHasHappened() == false)) {
                     return true;
                 }
+                if ((checkCond.equals(String.valueOf(currentArea))) && (encounter.getHasHappened() == false)) {
+                    return true;
+                }
             }
         }
-                return false;
-            }
+        return false;
+    }
 
     static String encounterHappens(String encounterName) {
         Encounter encounter = encounters.get(encounterName);
         String[] commands = encounter.getEvents().split(",");
-        for (String command: commands) {
-            String[] comm = command.split(" ",2);
+        for (String command : commands) {
+            String[] comm = command.split(" ", 2);
             switch (comm[0]) {
-                case "goto": {
+                case "move": {
                     int nextArea = fetchAreaID(comm[1]);
+                    System.out.println(nextArea);
                     if (nextArea != -1) {
                         currentArea = nextArea;
                     }
@@ -167,16 +167,8 @@ public class Game {
                     areaList.get(currentArea).getItemList().remove(comm[1]);
                     break;
                 }
-                case "win": {
-                    // Win screen
-                    break;
-                }
-                case "end": {
-                    // Lose screen
-                    System.out.println("You lose! You had " + points+".");
-                }
                 case "gain": {
-                    points+=Integer.parseInt(comm[1]);
+                    points += Integer.parseInt(comm[1]);
                 }
                 case "set": {
                     flaglist.add(comm[1]);
@@ -186,15 +178,23 @@ public class Game {
                     flaglist.remove(comm[1]);
                     break;
                 }
+                case "flip": {
+                    if (flaglist.contains(comm[1])) {
+                        flaglist.remove(comm[1]);
+                    } else {
+                        flaglist.add(comm[1]);
+                    }
+                }
                 case "call": {
                     encounterHappens(comm[1]);
                     break;
                 }
-
                 case "damage": {
-                    hurt += Integer.parseInt(comm[1]);
+                    if (hurt == 0) {
+                        hurt += Integer.parseInt(comm[1]);
+                    }
+                    break;
                 }
-
                 case "answer": {
                     break;
                 }
@@ -241,7 +241,6 @@ public class Game {
         }
     }
 
-
     public void encounterReader() {
         try (Scanner encounterReader = new Scanner(new File("./assets/encounters.dat"))) {
             while (encounterReader.hasNextLine()) {
@@ -261,18 +260,5 @@ public class Game {
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
         }
-
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
