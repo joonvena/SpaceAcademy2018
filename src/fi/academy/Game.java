@@ -1,5 +1,9 @@
 package fi.academy;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -14,6 +18,8 @@ public class Game {
     static List<String> inventory = new ArrayList<>();
     static List<String> flaglist = new ArrayList<>();
     static boolean errorMessage = false;
+    static MediaPlayer mediaPlayer;
+
 
     public void start() {
         fileReader();
@@ -56,24 +62,7 @@ public class Game {
 
             case "use": {
                 if (command[1].contains("computer")) {
-                    String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
-                    if (areaList.get(currentArea).getItemList().contains(computerName)) {
-                        if (command[1].length() > computerName.length()) {
-                            String answer = command[1].substring(command[1].indexOf("computer") + 9);
-                            System.out.println("answer!");
-                            Encounter encounter = encounters.get(computerName);
-                            String[] events = encounter.getEvents().split(",");
-                            for (int i = 0; i < events.length; i++) {
-                                if (events[i].equals("answer " + answer)) {
-                                    lastItemUsed = computerName + "OK";
-                                } else {
-                                    lastItemUsed = "accessDenied";
-                                }
-                            }
-                        } else {
-                            lastItemUsed = computerName;
-                        }
-                    }
+                    computerTest(command);
                 } else if ((encounters.get(command[1]) != null) && (inventory.contains(command[1]) || (areaList.get(currentArea).getItemList().contains(command[1])))) {
                     System.out.println("Testi");
                     lastItemUsed = command[1];
@@ -119,6 +108,27 @@ public class Game {
             }
         }
         return -1;
+    }
+
+    public static void computerTest(String [] command) {
+        String computerName = command[1].substring(0, (command[1].indexOf("computer") + 8));
+        if (areaList.get(currentArea).getItemList().contains(computerName)) {
+            if (command[1].length() > computerName.length()) {
+                String answer = command[1].substring(command[1].indexOf("computer") + 9);
+                System.out.println("answer!");
+                Encounter encounter = encounters.get(computerName);
+                String[] events = encounter.getEvents().split(",");
+                for (int i = 0; i < events.length; i++) {
+                    if (events[i].equals("answer " + answer)) {
+                        lastItemUsed = computerName + "OK";
+                    } else {
+                        lastItemUsed = "accessDenied";
+                    }
+                }
+            } else {
+                lastItemUsed = computerName;
+            }
+        }
     }
 
     static boolean encounterCheck(String encounterName) {
@@ -198,6 +208,9 @@ public class Game {
                 case "answer": {
                     break;
                 }
+                case "sound": {
+                    playSound(comm[1]);
+                }
             }
         }
         System.out.println("auto");
@@ -244,7 +257,6 @@ public class Game {
     public void encounterReader() {
         try (Scanner encounterReader = new Scanner(new File("./assets/encounters.dat"))) {
             while (encounterReader.hasNextLine()) {
-                ArrayList<Encounter> encountersInRoom = new ArrayList<>();
                 String encounterName = encounterReader.nextLine();
                 String encounterDescription = encounterReader.nextLine();
                 ArrayList<String> conditions = new ArrayList<>();
@@ -260,5 +272,18 @@ public class Game {
             e.printStackTrace();
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public static void playSound(String filename) {
+        try {
+            String bip = "./assets/" + filename;
+            Media hit = new Media(new File(bip).toURI().toString());
+            mediaPlayer = new MediaPlayer(hit);
+            mediaPlayer.play();
+//
+        } catch (Exception e) {
+            System.out.println("Error happened");
+        }
+
     }
 }
