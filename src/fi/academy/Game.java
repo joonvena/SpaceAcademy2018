@@ -18,6 +18,7 @@ public class Game {
     static List<String> inventory = new ArrayList<>();
     static List<String> flaglist = new ArrayList<>();
     static boolean errorMessage = false;
+    static int lastHurt = 0;
     static MediaPlayer mediaPlayer;
 
 
@@ -72,6 +73,14 @@ public class Game {
                     break;
                 }
                 break;
+            }
+            case "tele": {
+                int tmp = Integer.parseInt(command[1]);
+                if (tmp>=0 && tmp<=21) currentArea = tmp;
+                break;
+            }
+            case "summon": {
+                inventory.add(command[1]);
             }
         }
     }
@@ -138,6 +147,9 @@ public class Game {
                 if (checkCond.equals(".") && (encounter.getHasHappened() == false)) {
                     return true;
                 }
+                if (inventory.contains(checkCond)) {
+                    return true;
+                }
                 if ((flaglist.contains(checkCond)) && (encounter.getHasHappened() == false)) {
                     return true;
                 }
@@ -168,12 +180,19 @@ public class Game {
                     break;
                 }
                 case "lose": {
-                    inventory.remove(comm[1]);
+                    if (inventory.contains(comm[1])) {
+                        inventory.remove(comm[1]);
+                    } else {
+                        areaList.get(currentArea).getItemList().remove(comm[1]);
+                    }
                     break;
                 }
                 case "disable": {
                     areaList.get(currentArea).getItemList().remove(comm[1]);
                     break;
+                }
+                case "insert": {
+                    areaList.get(currentArea).getItemList().add(comm[1]);
                 }
                 case "gain": {
                     points += Integer.parseInt(comm[1]);
@@ -198,8 +217,12 @@ public class Game {
                     break;
                 }
                 case "damage": {
+                    // hurt == 0 means the monster is right in front of you -- you cannot hurt it if it's somewhere else!
                     if (hurt == 0) {
-                        hurt += Integer.parseInt(comm[1]);
+                        hurt = Integer.parseInt(comm[1]);
+                        System.out.println("hurt="+hurt);
+                        System.out.println(comm[1]);
+                        lastHurt = Integer.parseInt(comm[1]);
                     }
                     break;
                 }
@@ -208,11 +231,11 @@ public class Game {
                 }
                 case "sound": {
                     playSound(comm[1]);
+                    break;
                 }
             }
         }
-        System.out.println("auto");
-        encounter.setHasHappened(true);
+        if (lastItemUsed==" ") encounter.setHasHappened(true);
         return encounter.getDescription();
     }
 
