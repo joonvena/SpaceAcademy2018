@@ -166,15 +166,15 @@ public class Controller {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_crew.jpg"));
         } else if (thisArea.getAreaName().equals("Robotics")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_robotic.jpg"));
-        } else if (thisArea.getAreaName().equals("FIXServer Room")) {
+        } else if (thisArea.getAreaName().equals("Server Room")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_server.jpg"));
-        } else if (thisArea.getAreaName().equals("FIXReactor")) {
+        } else if (thisArea.getAreaName().equals("Reactor")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_reactor.jpg"));
-        } else if (thisArea.getAreaName().equals("FIXEngine Room")) {
+        } else if (thisArea.getAreaName().equals("Engine Room")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_engine.jpg"));
-        } else if (thisArea.getAreaName().equals("FIXComms")) {
+        } else if (thisArea.getAreaName().equals("Comms")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_comms.jpg"));
-        } else if (thisArea.getAreaName().equals("FIXAstrogation")) {
+        } else if (thisArea.getAreaName().equals("Astrogation")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_astro.jpg"));
         } else if (thisArea.getAreaName().equals("Storage")) {
             ImageResolve.setImage(new Image("/fi/academy/mapimages/map_storage.jpg"));
