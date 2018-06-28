@@ -61,7 +61,6 @@ public class Controller {
             text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
             output.getChildren().addAll(text, new Text ("\n"));
         }
-
         Area thisArea = areaList.get(currentArea);
         itemEvent();
         monsterEvent();
@@ -71,7 +70,6 @@ public class Controller {
         moveTest = false;
         updateGUI();
     }
-
     public void itemEvent () {
         // If previous command triggered an item event, activate the event
         if (!lastItemUsed.equals(" ")) {
