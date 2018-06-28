@@ -66,6 +66,8 @@ flamer
 The flamer spouts a spray of burning gasoline! WOOF! Unfortunately, the fire consumes a lot of oxygen!
 fuel
 damage 8,lose fuel
+fresh socks
+These unused socks have a nice feel to them, and what's best, no one else has used them!
 fuel
 You can probably find a use for fuel if you find a suitable item with which to use it...
 .
@@ -104,6 +106,10 @@ You swing and stab wildly with the incredibly sharp scalpel until it breaks!
 damage 2,lose scalpel
 severed leg
 You flail the leg around until you realize it's not very good for any purpose when detached from the body it belonged to.
+.
+.
+socks
+Your feet aren't cold anymore! So nice! If only they weren't someone else's socks. When you think about it... eww.
 .
 .
 whiskey
