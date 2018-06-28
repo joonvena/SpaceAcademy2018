@@ -17,7 +17,7 @@ move LoseLose
 huntBegins
 Suddenly, the loudspeakers on the walls sound a blaring alarm! BLEEP! BLEEP! BLEEP! The sound of hydraulics hissing somewhere within the walls is deafening. Simultaneously, something large and sinister stirs somewhere near and lets out a loud, high-pitched screech. Whatever it was, it didn't sound friendly. The hunt is on!
 .
-set shitHitTheFan,damage 6
+set shitHitTheFan,damage 20
 notWorking
 It's oddly cold here in the reactor room... The reactor is offline! Maybe there's a way to restart it... (You probably need some wire as well as some tools. Once you have them in your inventory, type "use reactor".)
 .
