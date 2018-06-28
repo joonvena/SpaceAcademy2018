@@ -1,9 +1,9 @@
 startGame
-It's cold... I'm shivering and my limbs feel stiff as I crawl out of a cryogenic pod. How long have I been here? What has happened here?
+It's cold... You're shivering and your limbs feel stiff as you crawl out of a cryogenic pod. How long have you been here? What has happened here?
 .
-get jumpsuit,set steamOn,sound startSound.mp3
+get jumpsuit,set steamOn,set engineOffline,set reactorOffline,sound startSound.mp3
 steamSeen
-Hot steam is leaking into the access corridor ahead. Looks dangerous, I'd better not go there until I've fixed the problem!
+Hot steam is leaking into the access corridor ahead. Looks dangerous, you'd better not go there until you've fixed the problem!
 steamOn
 .
 steamGone
@@ -12,15 +12,23 @@ steamOff
 .
 steamDeath
 You noticed the deadly steam pouring out from the ventilation system, but you totally ignored it. ARGH!
-.
+steamOn
 move LoseLose
 huntBegins
 Suddenly, the loudspeakers on the walls sound a blaring alarm! BLEEP! BLEEP! BLEEP! The sound of hydraulics hissing somewhere within the walls is deafening. Simultaneously, something large and sinister stirs somewhere near and lets out a loud, high-pitched screech. Whatever it was, it didn't sound friendly. The hunt is on!
 .
 set shitHitTheFan,damage 6
 notWorking
-It's oddly cold here in the reactor room... The reactor is offline! I wonder if there's a way to restart it... (You probably need some wire as well as some tools. Once you have them in your inventory, type "use reactor".)
+It's oddly cold here in the reactor room... The reactor is offline! Maybe there's a way to restart it... (You probably need some wire as well as some tools. Once you have them in your inventory, type "use reactor".)
 .
+.
+engineNeedsPower
+The engines seem to be cut off from power.
+reactorOffline
+.
+somethingNotDone
+As you enter the escape pod, you get the feeling that something important still needs to be done... however, if you just want to escape, go ahead.
+engineOffline
 .
 flamerFound
 As you enter the room, you notice a flamer prototype on a table. Looks like it's missing a component that injects the fuel. And of course, you're going to need a lot of fuel!
@@ -45,11 +53,11 @@ gain 1,lose apple
 beds
 You try to take a nap, but all the excitement and terror keeps you awake.
 .
-.
+heavy
 bench press
 Ahh, exercise is awesome! And look at those pecs! Damn!
 .
-gain 2
+gain 2,heavy
 blood sample
 The blood sample is really quite extraordinary. The blood cells in the sample are rapidly regenerating. This sample is not from a human!
 1
@@ -64,6 +72,10 @@ You can't use a pistol clip like that. Try "use pistol" while you have a clip in
 .
 comic book
 Well this sounds interesting... "Tommy Steelneck's adventures on Mars"
+.
+.
+deactivated computer
+The computer beeps and outputs: "INSERT KEYCARD!"
 .
 .
 dead nurse
@@ -90,14 +102,18 @@ doctor's log #4
 "I've collected more samples and data about the creature. I've named it the "gene-regenerating unhuman entity", and it is extremely dangerous. If it were to reach the surface of Earth, our human race - indeed all life as we know it - would soon become extinct."
 .
 .
+door
+You open the door. You made it to the escape pod! Wow!
+.
+move escape pod
 exercise bike
 You pedal the bike for a while and feel exhausted.
 .
-.
+heavy
 eyeball
-A retina scanner identifies the owner of the eyeball as Doctor Sawyer. The computer sounds almost happy: BEEP-BOOP! You gain access to some secret stuff on the computer.
+A retina scanner identifies the owner of the eyeball as Doctor Sawyer.
 1
-call lab computerOK
+.
 face wash
 The face wash makes you feel rejuvenated!
 .
@@ -109,11 +125,11 @@ damage 8,lose fuel
 functional reactor
 You fixed the reactor. High five!
 .
-.
+heavy
 flamer prototype
-You use the screwdriver to fix the flamer's injection system using the hose and needle! You now have a functional flamethrower!
-needle,hose,screwdriver
-lose needle,lose hose,lose flamer prototype,get flamer
+You attach the needle to fix the prototype's injection system! You now have a functional flamethrower!
+needle
+lose needle,lose flamer prototype,get flamer
 foam roller
 THUD! The foam roller probably makes a terrible weapon.
 .
@@ -146,10 +162,14 @@ kettlebell
 You swing the heavy kettlebell! Somehow, miraculously, you manage to break it in the process!
 .
 damage 3,lose kettlebell
+keycard
+You insert the keycard and the airlock computer's red lights turn green.
+16
+disable deactivated computer,insert airlock computer
 launch button
 You push the big red button in the shuttle's control panel. SWOOSH! The shuttle detaches itself from the station's airlock, and shortly after, the shuttle starts its voyage back to Earth!
 .
-.
+heavy,move WinWin
 lettuce
 So fresh! So refreshing! The taste of the lettuce reminds you of how great things were back on Earth. Why did you ever leave?
 .
@@ -157,7 +177,7 @@ gain 1,lose lettuce
 locked door
 The airlock door is firmly shut. You probably need a keycard to activate the computer and then insert a password, but who knows where you can find the password...
 .
-.
+heavy
 pistol
 BANG! BANG! Ha, I made bullet holes in everything near me! I feel really tough now!
 clip
@@ -173,11 +193,11 @@ manual
 medical scanner
 You scan yourself with the scanner. Everything looks fine. Your heart rate is a bit high, though.
 .
-.
+heavy
 microscope
 You can examine blood and tissue samples with the microscope. Bring your samples here and type "use blood sample", for example.
 .
-.
+heavy
 mop
 You swing the mop like it's a weapon and break it!
 .
@@ -201,7 +221,7 @@ gain 3,lose oxygen candle
 pod
 What, you want to crawl back into the pod? No way!
 .
-.
+heavy
 pool stick
 This sturdy-looking stick isn't quite as sturdy as it looks. SWING! It breaks!
 .
@@ -209,23 +229,23 @@ damage 1,lose pool stick
 pool table
 You shoot a few balls. You're good at this! Then the stick breaks.
 pool stick
-gain 5
+gain 5,heavy
 radar
 The radar indicates that there's something off with the space station's orbit.
 .
-.
+heavy
 radio
 You push some buttons on the radio and receive a message: "Hello? Hello? Is anyone there? Have you contained the situation? For some reason, you can't broadcast messages."
 .
-.
+heavy
 radish
 You just ate a radish, which tasted like a radish.
 .
 gain 1,lose radish
 reactor
-Using a piece of wire, a screwdriver, and a wrench, you fix the reactor! You still need to start it up, somehow.
-screwdriver,wire,wrench
-lose wire,disable reactor,insert functional reactor
+You need to fix the reactor. Perhaps the right tool will do the trick.
+.
+heavy
 rowing machine
 Row, row, row your boat, gently down the stream... Ahh, exercise!
 .
@@ -235,11 +255,11 @@ You swing and stab wildly with the incredibly sharp scalpel until it breaks!
 .
 damage 2,lose scalpel
 screwdriver
-You can probably use this item to fix something.
-.
-.
+Using a screwdriver, you fix the reactor! You still need to start it up, somehow.
+11
+disable reactor,insert functional reactor,set reactorOnline,clear reactorOffline
 scribbled note
-This note, written on a piece of toilet paper, reads: "We're all going to die".
+This note, written on a piece of toilet paper, reads: "We're all going to die. But if you want to try to escape, think about what this command outputs: console.log(3==="3")".
 .
 .
 severed leg
@@ -261,15 +281,15 @@ heavy
 screens
 The screens offer a magnificent view of Earth, the Moon, and other celestial bodies. Earth looks strangely big today.
 .
-.
+heavy
 suspicious pod
 There's something off about this cryogenic pod. It's shaking uncontrollably, and you can hear a faint growling sound coming from inside it. You can't open it, and you're not sure if that would be a good idea, either.
 .
 heavy
 toilets
-You use one of the toilets and find a length of hose stashed inside it! Treasure!
+You use one of the toilets and find a keycard stashed inside it! Treasure!
 .
-get hose,disable toilets
+heavy,get keycard,disable toilets
 treadmill
 Ain't nothing like a nice jog on a treadmill!
 .
@@ -285,13 +305,25 @@ gain 3,lose whiskey
 airlock computer
 The computer outputs the following: "Please enter Captain Smith's password (use airlock computer [password])."
 .
-.
+heavy,answer false
 airlock computerOK
 You open the airlock! You can enter the airlock by typing "use door".
 .
 insert door,disable airlock computer
-engine room computer
-The computer outputs the following: "Please enter password."
+astrogation computer
+BEEP. BEEP! The computer outputs: "Space station orbit decaying! Collision with Earth will happen if the course is not righted!"
+.
+.
+engine computer
+The computer outputs the following: "Please enter password. What does the following code output: var n1 = 18.0; var n2 = 18; console.log(n1 === n2);"
+reactorOnline
+heavy,answer true
+engine computerOK
+You successfully hack the engine computer, and immediately, the engines engage and the space station starts righting its orbit! Congratulations, you may just have saved Earth!
+.
+disable lab computer,clear engineOffline,set engineOnline
+terminal computer
+Beeping and buzzing violently, the computer outputs: "ERROR! ERROR! ERROEddfff!"
 .
 .
 lab computer

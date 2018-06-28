@@ -48,7 +48,7 @@ public class Controller {
         output.heightProperty().addListener(observable -> Scroll.setVvalue(1D));
         Scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		inventoryScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-		
+
         // Get command from text box, parse it
         String input = commandInput.getText();
         commandParser(input);
@@ -58,16 +58,17 @@ public class Controller {
         if (errorMessage == true) {
             errorMessage = false;
             Text text = new Text(Game.encounterHappens("fumble"));
-            text.setStyle("-fx-font-style: italic");
-            output.getChildren().addAll(text, new Text ("\n\n"));
+            text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+            output.getChildren().addAll(text, new Text ("\n"));
         }
 
         Area thisArea = areaList.get(currentArea);
         itemEvent();
         monsterEvent();
         areaEvent(thisArea);
-        displayArea(thisArea);
+        if (moveTest == false) displayArea(thisArea);
         commandInput.clear();
+        moveTest = false;
         updateGUI();
     }
 
@@ -78,17 +79,19 @@ public class Controller {
             if (Game.encounterCheck(lastItemUsed)) {
                 text = new Text(Game.encounterHappens(lastItemUsed));
             } else {
-                text = new Text("Nothing happens. (Either something is missing or this is not the way the item is meant to be used.)\n\n"); // Not sure if this works?!?
+                text = new Text("Nothing happens. (Either something is missing or this is not the way the item is meant to be used.)\n"); // Not sure if this works?!?
             }
 
-            String reaction = "";
-            if (lastHurt==1) reaction = " The monster flinched but doesn't go away.";
-            if (lastHurt>1 && lastHurt <5) reaction = " You hurt the monster, and it escaped to the ventilation system, at least for a while.";
-            if (lastHurt>=5) reaction = " You dealt some serious damage to the monster! It scurries off through the ventilation system.";
+            Text reaction = new Text("");
+            if (lastHurt==1) reaction = new Text (" The monster flinched but doesn't go away.");
+            if (lastHurt>1 && lastHurt <5) reaction = new Text(" You hurt the monster, and it escaped to the ventilation system, at least for a while.");
+            if (lastHurt>=5) reaction = new Text (" You dealt some serious damage to the monster! It scurries off through the ventilation system.");
 
-            text.setStyle("-fx-font-style: italic");
+            text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
             text.setFill(Color.WHITE);
-            output.getChildren().addAll(text, new Text(reaction),new Text("\n\n"));
+            reaction.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+            reaction.setFill(Color.WHITE);
+            output.getChildren().addAll(text, reaction,new Text("\n"));
             lastItemUsed = " ";
             lastHurt = 0;
         }
@@ -101,19 +104,19 @@ public class Controller {
             System.out.println(hurt);
             Text text = null;
             switch (hurt) {
-                case -1: text = new Text (encounterHappens("monsterKills")+"\n\n");
+                case -1: text = new Text (encounterHappens("monsterKills")+"\n");
                     break;
-                case 0: text = new Text (encounterHappens("monsterAppears")+"\n\n");
+                case 0: text = new Text (encounterHappens("monsterAppears")+"\n");
                     break;
-                case 1: text = new Text (encounterHappens("monsterOverhead")+"\n\n");
+                case 1: text = new Text (encounterHappens("monsterOverhead")+"\n");
                     break;
-                case 2: text = new Text (encounterHappens("monsterNear")+"\n\n");
+                case 2: text = new Text (encounterHappens("monsterNear")+"\n");
                     break;
-                case 3: text = new Text (encounterHappens("monsterFar")+"\n\n");
+                case 3: text = new Text (encounterHappens("monsterFar")+"\n");
                     break;
             }
             if (hurt <= 3 && hurt > -2) {
-                text.setStyle("-fx-font-style: italic");
+                text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
                 text.setFill(Color.WHITE);
                 output.getChildren().addAll(text);
             }
@@ -126,9 +129,9 @@ public class Controller {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
                     Text text = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
-                    text.setStyle("-fx-font-style: italic");
+                    text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
                     text.setFill(Color.WHITE);
-                    output.getChildren().addAll(text, new Text ("\n\n"));
+                    output.getChildren().addAll(text, new Text ("\n"));
                 }
             }
         }
@@ -201,7 +204,7 @@ public class Controller {
         text5.setFill(locationColor);
         text5.setStyle("-fx-font-weight: bold;");
         text2.setFill(Color.WHITE);
-        text2.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+        text2.setStyle("-fx-font-size: 16px;");
         text3.setFill(Color.WHITE);
         text3.setStyle("-fx-font-weight: bold;");
         areaStyling.setFill(Color.WHITE);
@@ -209,7 +212,6 @@ public class Controller {
         text4.setStyle("-fx-font-weight: bold");
         itemsStyling.setFill(itemColor);
 
-        //output.getChildren().addAll(text1, text2, text3, text4, new Text("\n\n"));
         output.getChildren().addAll(text1, text5, text2, text3, areaStyling, text4, itemsStyling, new Text("\n\n"));
     }
 

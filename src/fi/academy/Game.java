@@ -18,6 +18,7 @@ public class Game {
     static List<String> inventory = new ArrayList<>();
     static List<String> flaglist = new ArrayList<>();
     static boolean errorMessage = false;
+    static boolean moveTest = false;
     static int lastHurt = 0;
     static MediaPlayer mediaPlayer;
 
@@ -29,6 +30,7 @@ public class Game {
 
     public static void commandParser(String input) {
         String[] command = input.split(" ", 2);
+        if (command[0].equals(input)) return;
         switch (command[0]) {
             case "goto": {
                 int nextArea = fetchAreaID(command[1]);
@@ -173,6 +175,7 @@ public class Game {
                     int nextArea = fetchAreaID(comm[1]);
                     System.out.println(nextArea);
                     if (nextArea != -1) {
+                        moveTest = true;
                         currentArea = nextArea;
                     }
                     break;
@@ -195,9 +198,11 @@ public class Game {
                 }
                 case "insert": {
                     areaList.get(currentArea).getItemList().add(comm[1]);
+                    break;
                 }
                 case "gain": {
                     points += Integer.parseInt(comm[1]);
+                    break;
                 }
                 case "set": {
                     flaglist.add(comm[1]);
