@@ -39,24 +39,24 @@ This gym is equipped with all manner of modern exercise equipment. The reek of s
 bench press,exercise bike,foam roller,kettlebell,rowing machine,treadmill
 .
 Crew Quarters
-All crew members live in this area. The crew quarters are pretty comfortable for their size.
+All crew members live in this area, but at the moment you see no one here. The crew quarters are pretty comfortable for their size.
 6 7
 beds,dead scientist,doctor's log #1,face wash,glasses,ipod,pistol,socks
 .
 Robotics
 This area is intended for the storage and maintenance of different kinds of robots. The robots seem to have been smashed into pieces. Some of the machines still buzz, whir, and emit showers of sparks.
 4 10 11
-camera,cleaner bot,fuel,robot parts,wire
+camera,fuel,robot parts,wire
 .
 Server Room
 Long rows of server cabinets form narrow aisles in this room. The air feels cool here, and the hum of the air conditioning system is louder here than in other parts of the space station.
 9 12
-doctor's log #4,terminal computer,wire
+broken bot,doctor's log #4,terminal computer,wire
 .
 Reactor
 This module houses the space station's reactor, which provides electricity to the whole station. The air is thick with steam, and the reactor spits out sparks and smoke every once in a while.
 9 12
-broken robot,fuel,reactor,oxygen candle
+fuel,reactor,oxygen candle
 notWorking
 Engine Room
 The engine deck houses all propulsion machinery necessary for maintaining the space station's orbit around Earth. The heavy smell of machine oil is evident in the air, and a loud cacophony of thunking, hissing, and grinding echoes through the room.
@@ -67,16 +67,16 @@ Comms
 This room is full of communication computers and radio equipment, which emit buzzing and beeping sounds interspersed with static and fragments of messages.
 4 14 15
 flamer prototype,radio
-.
+flamerFound
 Astrogation
 Large screens showing star maps and video feed from outside the station line the walls, and beneath the screens, a long row of control panels is lit up like a Christmas tree.
 13 16
-astrogation computer,controls,radar,screens,screwdriver
+astrogation computer,radar,screens,screwdriver
 .
 Storage
 The long shelves of this room are full of miscellaneous items.
 13 16
-clip,clip,fuel,fuel,fuel,fresh socks,oxygen candle,mop
+clip,clip,fuel,fuel,fresh socks,oxygen candle,mop
 .
 Airlock
 The airlock ensures safe passage between the space station and any vessel docked to the station.
@@ -84,27 +84,27 @@ The airlock ensures safe passage between the space station and any vessel docked
 deactivated computer,locked door
 airlockLocked
 Escape Pod
-This small shuttle can take you away from the scape station.
+This small shuttle can take you away from the space station.
 16
 launch button
 somethingNotDone
-WinWin
-You saved yourself and everyone else!
+Earth
+The game is over! Thanks for playing!
 18
 .
+cowardlyEscape,heroOfTheDay
+Unused
 .
-WinLose
-You saved yourself, but the monster survives the collision when the space station crashes to Earth. The monster really likes it on Earth, rapidly reproducing and killing everyone on the planet!
 19
 .
 .
-LoseWin
-You died, but at least Earth was saved!
+Unknown
+.
 20
 .
 .
-LoseLose
-You died!
+Death
+The game is over! Thanks for playing!
 21
 .
-.
+horrificDeath,nobleSacrifice

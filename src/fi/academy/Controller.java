@@ -20,10 +20,9 @@ import static fi.academy.Game.*;
 public class Controller {
 	
 	// Custom colors for elements
-    Color locationColor = Color.web("#81CFE0");
+    Color locationColor = Color.web("#E3AB59");
     Color itemColor = Color.web("#59ABE3");
-    Color encounterColor = Color.web("#3498DB");
-	
+
     @FXML
     private TextField commandInput;
     @FXML
@@ -52,13 +51,13 @@ public class Controller {
         // Get command from text box, parse it
         String input = commandInput.getText();
         commandParser(input);
-        Text iText = new Text("> "+input+"\n\n");
+        Text iText = new Text("\n------------------------------------------------------------------------------\n\n> "+input+"\n\n");
         iText.setFill(Color.WHITE);
         output.getChildren().addAll(iText);
         if (errorMessage == true) {
             errorMessage = false;
             Text text = new Text(Game.encounterHappens("fumble"));
-            text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+            text.setStyle("-fx-font-style: italic;");
             output.getChildren().addAll(text, new Text ("\n"));
         }
         Area thisArea = areaList.get(currentArea);
@@ -68,6 +67,7 @@ public class Controller {
         if (moveTest == false) displayArea(thisArea);
         commandInput.clear();
         moveTest = false;
+        System.out.println("lasthurt:"+lastHurt);
         updateGUI();
     }
     public void itemEvent () {
@@ -83,28 +83,29 @@ public class Controller {
             Text reaction = new Text("");
             if (lastHurt==1) reaction = new Text (" The monster flinched but doesn't go away.");
             if (lastHurt>1 && lastHurt <5) reaction = new Text(" You hurt the monster, and it escaped to the ventilation system, at least for a while.");
-            if (lastHurt>=5) reaction = new Text (" You dealt some serious damage to the monster! It scurries off through the ventilation system.");
+            if (lastHurt>=5 && lastHurt<15) reaction = new Text (" You dealt some serious damage to the monster! It scurries off through the ventilation system.");
 
-            text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+            text.setStyle("-fx-font-style: italic;");
             text.setFill(Color.WHITE);
-            reaction.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+            reaction.setStyle("-fx-font-style: italic;");
             reaction.setFill(Color.WHITE);
             output.getChildren().addAll(text, reaction,new Text("\n"));
             lastItemUsed = " ";
-            lastHurt = 0;
         }
+        lastHurt = 0;
     }
 
     public void monsterEvent () {
         // If G.R.U.E. has been awakened, decrease the timer
         if (flaglist.contains("shitHitTheFan")) {
             hurt--;
-            System.out.println(hurt);
             Text text = null;
             switch (hurt) {
                 case -1: text = new Text (encounterHappens("monsterKills")+"\n");
                     break;
                 case 0: text = new Text (encounterHappens("monsterAppears")+"\n");
+                eventPicture.setImage(new Image("fi/academy/alien.png"));
+                Game.playSound("loseSound.mp3");
                     break;
                 case 1: text = new Text (encounterHappens("monsterOverhead")+"\n");
                     break;
@@ -114,8 +115,8 @@ public class Controller {
                     break;
             }
             if (hurt <= 3 && hurt > -2) {
-                text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
-                text.setFill(Color.WHITE);
+                text.setStyle("-fx-font-style: italic;");
+                text.setFill(Color.RED);
                 output.getChildren().addAll(text);
             }
         }
@@ -127,7 +128,7 @@ public class Controller {
             for (int i = 0; i < (thisArea.getEncountersinRoom().size()); i++) {
                 if (Game.encounterCheck(thisArea.getEncountersinRoom().get(i))) {
                     Text text = new Text(Game.encounterHappens(thisArea.getEncountersinRoom().get(i)));
-                    text.setStyle("-fx-font-style: italic; -fx-font-size: 16px;");
+                    text.setStyle("-fx-font-style: italic;");
                     text.setFill(Color.WHITE);
                     output.getChildren().addAll(text, new Text ("\n"));
                 }
@@ -198,14 +199,13 @@ public class Controller {
 
 
         text1.setFill(Color.WHITE);
-        text1.setStyle("-fx-font-weight: bold; -fx-font-style: italic;");
+        text1.setStyle("-fx-font-weight: bold;");
         text5.setFill(locationColor);
         text5.setStyle("-fx-font-weight: bold;");
         text2.setFill(Color.WHITE);
-        text2.setStyle("-fx-font-size: 16px;");
         text3.setFill(Color.WHITE);
         text3.setStyle("-fx-font-weight: bold;");
-        areaStyling.setFill(Color.WHITE);
+        areaStyling.setFill(locationColor);
         text4.setFill(Color.WHITE);
         text4.setStyle("-fx-font-weight: bold");
         itemsStyling.setFill(itemColor);
@@ -216,8 +216,6 @@ public class Controller {
     public void updateGUI() {
         // Update all GUI elements according to current game state!
         inventory.getChildren().clear();
-        System.out.println("This is test");
-        System.out.println(Game.inventory);
 		inventory.heightProperty().addListener(observable -> inventoryScroll.setVvalue(1D));
         for (String item : Game.inventory) {
             inventory.getChildren().addAll(new Text(item+"\n"));

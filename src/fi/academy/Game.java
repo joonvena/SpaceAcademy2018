@@ -94,6 +94,7 @@ public class Game {
             itemsInRoom.remove(input);
             inventory.add(input);
             System.out.println(inventory);
+            playSound("itemSound.mp3");
         } else {
             System.out.println(input + " is not in this area!");
         }
@@ -216,6 +217,7 @@ public class Game {
                     } else {
                         flaglist.add(comm[1]);
                     }
+                    break;
                 }
                 case "call": {
                     encounterHappens(comm[1]);

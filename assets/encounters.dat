@@ -13,17 +13,17 @@ steamOff
 steamDeath
 You noticed the deadly steam pouring out from the ventilation system, but you totally ignored it. ARGH!
 steamOn
-move LoseLose
+move Death
 huntBegins
 Suddenly, the loudspeakers on the walls sound a blaring alarm! BLEEP! BLEEP! BLEEP! The sound of hydraulics hissing somewhere within the walls is deafening. Simultaneously, something large and sinister stirs somewhere near and lets out a loud, high-pitched screech. Whatever it was, it didn't sound friendly. The hunt is on!
 .
 set shitHitTheFan,damage 20
 notWorking
-It's oddly cold here in the reactor room... The reactor is offline! Maybe there's a way to restart it... (You probably need some wire as well as some tools. Once you have them in your inventory, type "use reactor".)
+It's oddly cold here in the reactor room... The reactor is malfunctioning! Maybe there's a way to repair it... (You probably need a suitable tool for that. Once you have the right tool, type "use [tool name]".)
 .
 .
 engineNeedsPower
-The engines seem to be cut off from power.
+The engines seem to be cut off from power, and the computer is offline. You need to restore power, somehow!
 reactorOffline
 .
 somethingNotDone
@@ -38,6 +38,22 @@ airlockLocked
 As you enter the room, you notice red lights blinking on the airlock computer. The screen reads: "Before you attempt to use the airlock computer, please insert the keycard (use keycard)."
 .
 .
+horrificDeath
+You died a horrific death, but hopefully, you learned something that will save your life in your next life!
+engineOffline
+set horrificDeath,sound loseSound.mp3
+nobleSacrifice
+You managed to send the space station off a collision course with Earth, saving everyone on the planet. You're dead all the same. Better luck next time!
+engineOnline
+set nobleSacrifice,sound loseSound.mp3
+cowardlyEscape
+You saved yourself, but when the space station eventually crashed to Earth, the monster survived the collision. It really likes it on Earth, rapidly reproducing and killing everyone on the planet!
+engineOffline
+set cowardlyEscape,sound loseSound.mp3
+heroOfTheDay
+You made sure that the station wouldn't crash to Earth and even managed to save yourself. You really are the hero of the day. Now let's hope that someone on Earth doesn't get the smart idea of trying to capture the monster and study it for "scientific purposes"...
+engineOnline
+set heroOfTheDay,sound winSound.mp3
 ========== ITEM EVENTS ==========
 .
 .
@@ -49,7 +65,7 @@ damage 4,lose acid jar
 apple
 CHEW CHEW GULP! Ahh, so delicious! They say the Space Academy is famous for its fruit, and this apple was no exception!
 .
-gain 1,lose apple
+gain 1,lose apple,sound eatSound.mp3
 beds
 You try to take a nap, but all the excitement and terror keeps you awake.
 .
@@ -62,10 +78,18 @@ blood sample
 The blood sample is really quite extraordinary. The blood cells in the sample are rapidly regenerating. This sample is not from a human!
 1
 gain 10,lose blood sample
+camera
+Smile! You take a nice selfie of yourself and the room in which you are.
+.
+get photo,damage 1
 carrot
 Yum! The delicious taste of the carrot really makes you wonder what the scientists put in the nutrient solution...
 .
-gain 1,lose carrot
+gain 1,lose carrot,sound eatSound.mp3
+broken bot
+The robot momentarily whirs to life and says: "How are you today? I am happy to serve! We are going to die!" Then it goes limp again, falling to pieces on the floor.
+.
+heavy,disable broken bot
 clip
 You can't use a pistol clip like that. Try "use pistol" while you have a clip in your inventory.
 .
@@ -149,15 +173,15 @@ Wow, you can see everything so clearly now!
 grenade
 The grenade goes BOOM! It sure did cause some damage! I also blew a hole in the station's hull!
 .
-damage 12,lose grenade,set ohNoOxygen
+damage 12,lose grenade,set ohNoOxygen,sound grenade.mp3
 herring
 This herring is not really a fish. Get it? It's a red herring! POOF! It vanishes!
 .
 lose herring
 ipod
-You're listening to someone's "The Most Awesomest Space Mix Ever". It has some Babylon Zoo, David Bowie, and Michael Jackson on it. No one will blame you for listening to it since everyone seems to be dead.
+You're listening to someone's "The Most Awesomest Space Mix Ever". It has some Babylon Zoo, David Bowie, and Michael Jackson on it. No one will judge you for listening to it since everyone seems to be dead.
 .
-.
+sound starmanSound.mp3
 kettlebell
 You swing the heavy kettlebell! Somehow, miraculously, you manage to break it in the process!
 .
@@ -165,21 +189,21 @@ damage 3,lose kettlebell
 keycard
 You insert the keycard and the airlock computer's red lights turn green.
 16
-disable deactivated computer,insert airlock computer
+disable deactivated computer,insert airlock computer,lose keycard
 launch button
 You push the big red button in the shuttle's control panel. SWOOSH! The shuttle detaches itself from the station's airlock, and shortly after, the shuttle starts its voyage back to Earth!
 .
-heavy,move WinWin
+heavy,move Earth
 lettuce
 So fresh! So refreshing! The taste of the lettuce reminds you of how great things were back on Earth. Why did you ever leave?
 .
-gain 1,lose lettuce
+gain 1,lose lettuce,sound eatSound.mp3
 locked door
 The airlock door is firmly shut. You probably need a keycard to activate the computer and then insert a password, but who knows where you can find the password...
 .
 heavy
 pistol
-BANG! BANG! Ha, I made bullet holes in everything near me! I feel really tough now!
+BANG! BANG! Ha, you made bullet holes in everything near you! You feel really tough now!
 clip
 damage 4,lose clip
 jumpsuit
@@ -207,17 +231,21 @@ This might be useful if you need to inject fluids... maybe you can build somethi
 .
 .
 onion
-Ahh, I'm not crying, I'm not crying... it's just the onion. So great.
+Ahh, you're not crying, you're not crying... it's just the onion. So great.
 .
-gain 1,lose onion
+gain 1,lose onion,sound eatSound.mp3
 orange
 Ahh, so juicy! Reminds you of your vacation in Málaga back in 2058, except there's no hangover. "Hasta la vida loca, loca, loca, loca..."
 .
-gain 1,lose orange
+gain 1,lose orange,sound eatSound.mp3
 oxygen candle
 The oxygen candle releases a lot of oxygen, making the air inside the station a little bit better to breathe.
 .
 gain 3,lose oxygen candle
+photo
+It's a blurry polaroid of you in the Space Academy. There's something looming in the background, but you can't be sure if it's a monster, a robot, or something else.
+.
+.
 pod
 What, you want to crawl back into the pod? No way!
 .
@@ -235,17 +263,25 @@ The radar indicates that there's something off with the space station's orbit.
 .
 heavy
 radio
-You push some buttons on the radio and receive a message: "Hello? Hello? Is anyone there? Have you contained the situation? For some reason, you can't broadcast messages."
+You push some buttons on the radio and receive a message: "Hello? Hello? Is anyone there? Have you contained the situation?" For some reason, you can't broadcast messages.
 .
 heavy
 radish
 You just ate a radish, which tasted like a radish.
 .
-gain 1,lose radish
+gain 1,lose radish,sound eatSound.mp3
 reactor
 You need to fix the reactor. Perhaps the right tool will do the trick.
 .
 heavy
+robot sidekick
+"Weehee! Let's go save the world! Or ourselves!"
+.
+.
+robot parts
+You use the robot parts to repair the robot! You now have a useless and annoying robot sidekick!
+10
+disable broken bot,lose robot parts,get robot sidekick,gain 10
 rowing machine
 Row, row, row your boat, gently down the stream... Ahh, exercise!
 .
@@ -255,7 +291,7 @@ You swing and stab wildly with the incredibly sharp scalpel until it breaks!
 .
 damage 2,lose scalpel
 screwdriver
-Using a screwdriver, you fix the reactor! You still need to start it up, somehow.
+Using a screwdriver, you fix the reactor!
 11
 disable reactor,insert functional reactor,set reactorOnline,clear reactorOffline
 scribbled note
@@ -298,6 +334,10 @@ whiskey
 This brown liquor tastes funny. WHEE!
 .
 gain 3,lose whiskey
+wire
+This length of wire might be useful, or it might not.
+.
+.
 ========== COMPUTER EVENTS ==========
 .
 .
@@ -309,7 +349,7 @@ heavy,answer false
 airlock computerOK
 You open the airlock! You can enter the airlock by typing "use door".
 .
-insert door,disable airlock computer
+insert door,disable airlock computer,disable locked door
 astrogation computer
 BEEP. BEEP! The computer outputs: "Space station orbit decaying! Collision with Earth will happen if the course is not righted!"
 .
@@ -333,7 +373,7 @@ heavy,answer hello world
 lab computerOK
 You successfully hack the computer! Damn you're good! The ventilation system goes quiet. It's eerily quiet in the room now.
 .
-clear steamOn,set steamOff,disable lab computer,sound correctSound.mp3
+clear steamOn,set steamOff,disable lab computer
 accessDenied
 The computer outputs: "ACCESS DENIED!"
 .
@@ -347,7 +387,7 @@ You fumble around while babbling incomprehensibly. You lose time, which is the o
 .
 .
 tooHeavy
-The item you are trying to pick up is too heavy!
+The item is too heavy to pick up!
 .
 .
 ========== MONSTER EVENTS ==========
@@ -355,22 +395,22 @@ The item you are trying to pick up is too heavy!
 .
 .
 monsterKills
-The monster tears your chest open with its claws and chomps off your head with a swift bite.
+ The monster tears your chest open with its claws and chomps off your head with a swift bite.
 .
-move LoseLose
+move Death,sound eatSound.mp3
 monsterAppears
-The monster drops down from a ventilation pipe and lands right in front of you!
+ The monster drops down from a ventilation pipe and lands right in front of you!
 .
 .
 monsterOverhead
-You hear loud rumbling in the ventilation pipes directly above you!
+ You hear loud rumbling in the ventilation pipes directly above you!
 .
 .
 monsterNear
-You hear some noise coming from the ventilation pipes somewhere above you.
+ You hear some noise coming from the ventilation pipes somewhere above you.
 .
 .
 monsterFar
-You hear faint sounds echoing through the ventilation system.
+ You hear faint sounds echoing through the ventilation system.
 .
 .

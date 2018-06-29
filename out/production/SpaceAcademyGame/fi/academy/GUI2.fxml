@@ -31,7 +31,7 @@
                   </content>
                </ScrollPane>
                <TextField fx:id="commandInput" layoutX="24.0" layoutY="733.0" prefHeight="45.0" prefWidth="413.0" styleClass="commandBar" />
-               <Button fx:id="action" defaultButton="true" layoutX="460.0" layoutY="733.0" mnemonicParsing="false" onAction="#parseCommand" prefHeight="45.0" prefWidth="105.0" styleClass="btn" text="Button" />
+               <Button fx:id="action" defaultButton="true" layoutX="460.0" layoutY="733.0" mnemonicParsing="false" onAction="#parseCommand" prefHeight="45.0" prefWidth="105.0" styleClass="btn" text="Command" />
                <Label layoutX="607.0" layoutY="477.0" prefHeight="45.0" prefWidth="244.0" text="Inventory" textFill="WHITE">
                    <font>
                        <Font name="System Bold" size="20.0" fx:id="x1" />
@@ -41,14 +41,17 @@
                    <content>
                        <TextFlow fx:id="output" prefHeight="396.0" prefWidth="523.0" style="-fx-fill: white;">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Space Academy! All you need to know for now is that you can use the following commands: &quot;goto&quot;, &quot;take&quot;, &quot;drop&quot;, and &quot;use&quot;. You'll figure out the rest while playing. Good luck! Click the button to begin." />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Space Academy! You'll need the following commands to play the game:&#10;• goto: Move to an adjacent area.&#10;• take: Pick up an item in your current location.&#10;• drop: Leave an item in your current location.&#10;• use: Eat a food item, attack with a weapon, or otherwise use an item that is either in your inventory or in your current location.&#10;&#10;Each command requires a target. While moving, your target should be one of your adjacent areas, such as &quot;goto bio lab&quot;. While manipulating an item, the target is the name of an item, such as &quot;take apple&quot;.&#10;&#10;Computers are special items. You can check the status of a computer with the use command, such as &quot;use lab computer&quot;. If you want to hack a computer, you should also include a password, such as &quot;use lab computer bruce lee&quot;.&#10;&#10;You'll learn the rest while playing, so good luck and don't die (a lot)!&#10;&#10;Press Enter or click Command to begin!">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Text>
                      </children>
                   </TextFlow>
                    </content>
                </ScrollPane>
                <ImageView fx:id="eventPicture" fitHeight="227.25" fitWidth="303.0" layoutX="1080.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true">
                    <image>
-                       <Image url="@alien.png" />
                    </image>
                </ImageView>
            </children>

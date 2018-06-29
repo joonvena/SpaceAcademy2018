@@ -65,10 +65,15 @@
 
 
 #inventory > Text {
-    -fx-fill: white;
-    -fx-font-size : 18px;
+    -fx-fill: #59ABE3;
+    -fx-font-size : 16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 1, 1, 0, 3);
 }
 
+#output > Text {
+    -fx-font-size:16px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 1, 1, 0, 3);
+}
 
 .btn {
     -fx-background-color: #1b202b;
